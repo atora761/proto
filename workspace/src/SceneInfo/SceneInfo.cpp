@@ -16,7 +16,7 @@ char SceneInfo::init(){
 	decode(tabuf,timeAttackData);
 	tabuf.shrink_to_fit();
 
-	vector<char> s0buf(file.getSize("slalom.csv"));
+	/*vector<char> s0buf(file.getSize("slalom.csv"));
 	file.read(s0buf,"slalom.csv");
 	decode(s0buf,slalomData[common]);
 	s0buf.shrink_to_fit();
@@ -46,7 +46,7 @@ char SceneInfo::init(){
 	decode(g2buf,garageData[pattern2]);
 	g2buf.shrink_to_fit();
 
-
+*/
 
 	return 0;
 }
