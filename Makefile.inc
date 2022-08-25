@@ -28,7 +28,6 @@ APPL_CXXOBJS += \
 				PaternSlalom.o\
 				PaternJudge.o\
 				SceneControl.o\
-				AvoidanceRoute.o\
 				Task.o\
 				FileIO.o\
 				SceneInfo.o\

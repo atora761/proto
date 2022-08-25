@@ -1,5 +1,4 @@
 #include "../../include/Task/Task.h"
-#include "../../include/Avoidance/AvoidanceRoute.h"
 #include "../../include/Judge/PaternJudge.h"
 #include "../../include/Action/LineTrace.h"
 #include "../../include/Action/Curve.h"
