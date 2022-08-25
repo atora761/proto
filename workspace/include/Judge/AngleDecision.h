@@ -3,6 +3,7 @@
 #define RANGE_LIMIT 2 //使用範囲上限
 
 
+
 class AngleDecision : public UseJudgement {
 
 public:

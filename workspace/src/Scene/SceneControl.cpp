@@ -3,7 +3,7 @@
 #include "../../include/Judge/PaternJudge.h"
 #include "../../include/Task/Task.h"
 #include "../../include/SceneInfo/SceneInfo.hpp"
-
+#include "../../include/Judge/Judgement.h"
 //コンストラクタ
 SceneControl::SceneControl(){
     error     = SYS_NG;
@@ -18,44 +18,42 @@ int8_t SceneControl::init(){
     
     now_scenario = 0;
     scene_num = 10;
-    now_scene = 0;
+    now_scene = 1;
 
     //ファイル読み込み
     SceneInfo& sceneInfo    = SceneInfo::getInstance();
 	sceneInfo.init();
     //タイムアタックのシーン数取得
     scene_num = sceneInfo.get(TIMEATTACK,common);
-    scene_num = scene_num/sizeof(SceneData);
+    printf("タイムアタックシーン数%d\n",scene_num);
     return SYS_OK;
 }
 
 int8_t SceneControl::run(){
     PaternJudge &paternjudge = PaternJudge::getInstance();
     SceneInfo& sceneInfo    = SceneInfo::getInstance();
-    printf("scene_start\n");
-    SceneData sceneData;
     //シナリオ内全シーンが終了している場合
     if(now_scene > scene_num){
         now_scenario++;
-        if(now_scenario == 0){
+        if(now_scenario == 1){
             //スラロームのシーン数取得
             if(paternjudge.getSlalom() == 1){
                 scene_num = sceneInfo.get(SLALOM,pattern1);
             }else{
                 scene_num = sceneInfo.get(SLALOM,pattern2);
             }
-            scene_num = scene_num/sizeof(SceneData);
-            now_scene = 0;
+            printf("スラロームシーン数%d\n",scene_num);
+            now_scene = 1;
         }
-        if(now_scenario == 1){
+        if(now_scenario == 2){
             //ガレージのシーン数取得
             if(paternjudge.getGarage() == 1){
                 scene_num = sceneInfo.get(GARAGE,pattern1);
             }else{
                 scene_num = sceneInfo.get(GARAGE,pattern2);
             }
-            scene_num = scene_num/sizeof(SceneData);
-            now_scene = 0;
+            printf("ガレージシーン数%d\n",scene_num);
+            now_scene = 1;
         }
         //全シナリオが終了している場合
         if(now_scenario > 2){
@@ -87,7 +85,7 @@ int8_t SceneControl::run(){
             break;
     }
     //実行
-    Task *task = new Task(&(sceneData.moveData),&(sceneData.correctionData));
+    Task *task = new Task(sceneData.moveData,sceneData.correctionData);
     error = task->run();
     if(error != SYS_OK){
         printf("task_run_error\n");
@@ -103,12 +101,12 @@ int8_t SceneControl::run(){
 }
 
 int8_t SceneControl::SceneSwitch(){
-    int8_t judge = 0;
-
+    int8_t judge_bool = 0;
+    Judgement judgement;
     //シーン切り替え判定
     printf("scene_change_judge\n");
-    
-    if(judge == 1){
+    judge_bool=judgement.judge(sceneData.decisionData);
+    if(judge_bool == 1){
         now_scene++;
         printf("scene_change\n");
     }

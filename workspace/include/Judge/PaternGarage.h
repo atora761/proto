@@ -13,8 +13,9 @@ enum GarageColor
 #include <string>
 #include "ev3api.h"
 #include "system.h"
-class PaternGarage //: public Comparison
+class PaternGarage
 {
+/*
 private:
     RGB_DATA rgb;
 public:
@@ -22,5 +23,6 @@ public:
 
     ~PaternGarage();
 
-    int8 decide(); 
+    int8_t decide(); 
+*/
 };

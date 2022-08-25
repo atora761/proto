@@ -13,7 +13,7 @@ private:
 	//PARAMETER parameter;
 public:
 	Task();
-	Task(MoveData *movedata,CorrectionData *correctiondata);
+	Task(MoveData movedata,CorrectionData correctiondata);
 	~Task();
 
 	int8 init();

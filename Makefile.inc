@@ -23,6 +23,7 @@ APPL_CXXOBJS += \
 				TrapezoidControl.o\
 				Curve.o\
 				Straight.o\
+				Turn.o\
 				PaternGarage.o\
 				PaternSlalom.o\
 				PaternJudge.o\
@@ -33,6 +34,13 @@ APPL_CXXOBJS += \
 				SceneInfo.o\
 				UltraSonicSensor.o\
 				UltraSonic.o\
+				AngleDecision.o\
+				CoordinateDecision.o\
+				HSVDecision.o\
+				Judgement.o\
+				RGBDecision.o\
+				UltraSonicDecision.o\
+				UseJudgement.o\
 #
 SRCLANG := c++
 

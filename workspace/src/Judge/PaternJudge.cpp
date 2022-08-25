@@ -1,6 +1,4 @@
 #include "../../include/Judge/PaternJudge.h"
-#include "../../include/Judge/PaternSlalom.h"
-#include "../../include/Judge/PaternGarage.h"
 
 PaternJudge::PaternJudge(){
     slalomPatarn=0;

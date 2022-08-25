@@ -48,7 +48,6 @@ int8_t LineTrace::run(int32_t speed)
 	float 		pid_revision 	= 0.0f;
 	float		distance		= 0.0f; 
 	float		motor_revision  = 0.0f;
-	
 	color_space.update();
 	// 色空間からhsv値を取得してから、閾値と取得した値との差分をpid制御へ渡し、操作量を取得する
 	hsv_data 		= color_space.getHSV();
@@ -61,17 +60,15 @@ int8_t LineTrace::run(int32_t speed)
 	current_coordinate = car_data.getPos();
 	distance = std::sqrt(std::pow(current_coordinate.x - target_coordinate.x,2)+
 						 std::pow(current_coordinate.y - target_coordinate.y,2));
+	motor_revision = trapezoid.run(distance);
 
-	motor_revision = speed;
-	trapezoid.run(distance);
 	if ( edge == LEFT_LINE ){
-		motor_power.right = motor_revision - pid_revision;
-		motor_power.left  = motor_revision + pid_revision;
+		motor_power.right =speed- pid_revision;
+		motor_power.left  =speed + pid_revision;
 	} else if ( edge == RIGHT_LINE ){
-		motor_power.right = motor_revision + pid_revision;
-		motor_power.left  = motor_revision - pid_revision;
+		motor_power.right =speed + pid_revision;
+		motor_power.left  =speed - pid_revision;
 	}
-
 	steering.run(motor_power);
 
 	return SYS_OK;

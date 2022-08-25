@@ -1,10 +1,10 @@
 //*******************************************
 //角度判定
 //*******************************************
-#include "../include/system.h"
-#include "../include/UseJudgement.h"
-#include "../include/AngleDecision.h"
-#include "../include/CarData.h"
+#include "../../include/system/system.h"
+#include "../../include/Judge/UseJudgement.h"
+#include "../../include/Judge/AngleDecision.h"
+#include "../../include/CarData/CarData.h"
 
 AngleDecision::AngleDecision() {
 

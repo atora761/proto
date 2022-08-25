@@ -16,7 +16,7 @@ char SceneInfo::init(){
 	decode(tabuf,timeAttackData);
 	tabuf.shrink_to_fit();
 
-	/*vector<char> s0buf(file.getSize("slalom.csv"));
+	vector<char> s0buf(file.getSize("slalom.csv"));
 	file.read(s0buf,"slalom.csv");
 	decode(s0buf,slalomData[common]);
 	s0buf.shrink_to_fit();
@@ -46,7 +46,6 @@ char SceneInfo::init(){
 	decode(g2buf,garageData[pattern2]);
 	g2buf.shrink_to_fit();
 
-*/
 
 	return 0;
 }
@@ -65,7 +64,6 @@ char SceneInfo::decode(vector<char>& fileData,vector<SceneData>& sceneData){
 		// 使用動作
 		data_ptr = strtok(NULL,",");
 		tmpData.moveData.motion=atoi(data_ptr);
-		
 		// ライン位置
 		data_ptr = strtok(NULL,",");
 		tmpData.moveData.edge=atoi(data_ptr);
@@ -157,7 +155,6 @@ char SceneInfo::decode(vector<char>& fileData,vector<SceneData>& sceneData){
 		tmpData.decisionData.rgb.g=atoi(data_ptr);//G
 		data_ptr = strtok(NULL,",");
 		tmpData.decisionData.rgb.b=atoi(data_ptr);//B
-
 		// HSV範囲
 		data_ptr = strtok(NULL,",");
 		tmpData.decisionData.hsv_range[0]=atoi(data_ptr);//H
@@ -254,7 +251,6 @@ char SceneInfo::decode(vector<char>& fileData,vector<SceneData>& sceneData){
 		tmpData.correctionData.decisionData.rgb.g=atoi(data_ptr);//G
 		data_ptr = strtok(NULL,",");
 		tmpData.correctionData.decisionData.rgb.b=atoi(data_ptr);//B
-
 		// HSV範囲
 		data_ptr = strtok(NULL,",");
 		tmpData.correctionData.decisionData.hsv_range[0]=atoi(data_ptr);//H
@@ -278,7 +274,6 @@ char SceneInfo::decode(vector<char>& fileData,vector<SceneData>& sceneData){
 		// 角度範囲
 		data_ptr = strtok(NULL,",");
 		tmpData.correctionData.decisionData.angle=atof(data_ptr);
-
 		// 論理演算方法
 		data_ptr = strtok(NULL,"\n");
 		tmpData.correctionData.decisionData.logic=atoi(data_ptr);
@@ -286,8 +281,6 @@ char SceneInfo::decode(vector<char>& fileData,vector<SceneData>& sceneData){
 		sceneData.push_back(tmpData);
 		data_ptr = strtok(NULL,",");
 	}
-
-
 	return 0;
 }
 

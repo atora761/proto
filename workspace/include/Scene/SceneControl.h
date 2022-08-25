@@ -12,7 +12,7 @@ class SceneControl{
     int16_t scene_num;   //シーン数
     int16_t now_scene;   //現シーン番号
     int8_t  now_scenario; //現在シナリオ
-    
+    SceneData sceneData;
     public:
     //コンストラクタ
     SceneControl();

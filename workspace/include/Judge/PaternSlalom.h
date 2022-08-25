@@ -1,14 +1,16 @@
 #pragma once
 #define SLALOMPATERNA 1
 #define SLALOMPATERNB 2
+
 #include <cstdint>
 #include <string.h>
 #include <memory>
 #include <string>
 #include "ev3api.h"
 #include "system.h"
-class PaternSlalom //: public Comparison
+class PaternSlalom 
 {
+    /*
 private:
     int16 distance;
 public:
@@ -16,6 +18,7 @@ public:
 
     ~PaternSlalom();
 
-    int8 decide(); 
+    int8_t decide(); 
+    */
 };
 

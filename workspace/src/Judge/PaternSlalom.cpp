@@ -1,12 +1,13 @@
 #include "../../include/Judge/PaternSlalom.h"
-
+#include "../../include/Judge/UseJudgement.h"
+/*
 PaternSlalom::PaternSlalom(){
     distance=0;
 }
 
 PaternSlalom::~PaternSlalom(){}
 
-int8 PaternSlalom::decide(){
+int8_t PaternSlalom::decide(){
     int8 slalomstate=0;
 //    UltraSonic ultrasonic = UltraSonic::getInstance();
 //    distance=ultrasonic.getDistance();
@@ -19,3 +20,4 @@ int8 PaternSlalom::decide(){
     }
     return slalomstate;
 }
+*/

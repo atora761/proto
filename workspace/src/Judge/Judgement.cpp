@@ -1,33 +1,32 @@
-#include "../include/system.h"
-#include "../include/Judgement.h"
-#include "../include/UseJudgement.h"
-#include "../include/AngleDecision.h"
-#include "../include/ColorDecision.h"
-#include "../include/CoordinateDecision.h"
-#include "../include/HSVDecision.h"
-#include "../include/RGBDecision.h"
-#include "../include/UltraSonicDecision.h"
+#include "../../include/system/system.h"
+#include "../../include/Judge/Judgement.h"
+#include "../../include/Judge/UseJudgement.h"
+#include "../../include/Judge/AngleDecision.h"
+#include "../../include/Judge/RGBDecision.h"
+#include "../../include/Judge/CoordinateDecision.h"
+#include "../../include/Judge/HSVDecision.h"
+#include "../../include/Judge/RGBDecision.h"
+#include "../../include/Judge/UltraSonicDecision.h"
 
 int8_t Judgement::judge( DecisionData decisiondata ) {
 
 	AngleDecision angledecision( decisiondata.angle, decisiondata.angle_range );
-	ColorDecision colordecision( decisiondata.color );
+
 	CoordinateDecision coordinatedecision( decisiondata.coordinate, decisiondata.coordinate_range );
 	HSVDecision hsvdecision( decisiondata.hsv, decisiondata.hsv_range );
 	RGBDecision rgbdecision( decisiondata.rgb, decisiondata.rgb_range );
 	UltraSonicDecision ultrasonicdecision( decisiondata.distance, decisiondata.distance_range );
-	UseJudgement *usejudgement[] = { &angledecision ,&colordecision,&coordinatedecision ,
-									 &hsvdecision ,&rgbdecision ,&ultrasonicdecision };
+	UseJudgement *usejudgement[] = { &coordinatedecision ,&coordinatedecision ,&angledecision ,
+									 &rgbdecision ,&hsvdecision ,&ultrasonicdecision };
 	int8_t judge_cnt = 0;
 	int8_t result_check[ 2 ];
 
 	memset( result_check, 0, sizeof( result_check ) );
 
 	//判定実行
-	for ( judge_cnt = 0; (judge_cnt < 2 )&& (decisiondata.decision[ judge_cnt ] != -1); judge_cnt++ ) {
-
+	for ( judge_cnt = 0; (judge_cnt < 2 )&& (decisiondata.decision[ judge_cnt ] != 0); judge_cnt++ ) {
+		decisiondata.decision[ judge_cnt ]--;
 		result_check[ judge_cnt ] = usejudgement[ decisiondata.decision[ judge_cnt ] ]->decide();
-
 		if ( result_check[ judge_cnt ] < 0 ) {
 
 			return SYS_NG;

@@ -12,7 +12,14 @@
 #define SYS_NG 1    //異常終了
 #define SYS_PARAM 2 //引数エラー
 #define ALL_SCENE_END 3 //全シナリオ終了
-
+#define ABOVE 1	//以上
+#define BELOW 2
+#define XPOS_MAX 10000
+#define XPOS_MIN 0
+#define YPOS_MAX 10000
+#define YPOS_MIN 0
+#define RESULT_TRUE 1
+#define RESULT_FALSE 2
 #define CAR_WIDTH (134.22f)
 #define CAR_WHEEL_WIDTH (90.33f)
 

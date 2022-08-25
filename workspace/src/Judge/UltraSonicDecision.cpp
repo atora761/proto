@@ -1,7 +1,7 @@
-#include "../include/system.h"
-#include "../include/UseJudgement.h"
-#include "../include/UltraSonicDecision.h"
-#include "../include/UltraSonic.h"
+#include "../../include/system/system.h"
+#include "../../include/Judge/UseJudgement.h"
+#include "../../include/Judge/UltraSonicDecision.h"
+#include "../../include/Sonic/UltraSonic.h"
 
 UltraSonicDecision::UltraSonicDecision() {
 

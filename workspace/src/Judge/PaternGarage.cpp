@@ -1,11 +1,12 @@
 #include "../../include/Judge/PaternGarage.h"
 #include "../../include/ColorSpace/ColorSpace.h"
-
+#include "../../include/Judge/UseJudgement.h"
+/*
 PaternGarage::PaternGarage(){}
 
 PaternGarage::~PaternGarage(){}
 
-int8 PaternGarage::decide(){
+int8_t PaternGarage::decide(){
     int8 garagestate=0;
     ColorSpace color = ColorSpace::getInstance();
     rgb=color.getRGB();
@@ -27,3 +28,4 @@ int8 PaternGarage::decide(){
     }
     return garagestate;
 }
+*/

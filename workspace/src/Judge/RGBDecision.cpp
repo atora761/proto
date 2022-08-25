@@ -1,7 +1,7 @@
-#include "../include/system.h"
-#include "../include/UseJudgement.h"
-#include "../include/RGBDecision.h"
-#include "../include/ColorSpace.h"
+#include "../../include/system/system.h"
+#include "../../include/Judge/UseJudgement.h"
+#include "../../include/Judge/RGBDecision.h"
+#include "../../include/ColorSpace/ColorSpace.h"
 
 RGBDecision::RGBDecision() {
 

@@ -7,8 +7,8 @@
 #include "./PIDControl.h"
 #include "../ColorSpace/ColorSpace.h"
 
-#define LEFT_LINE 0
-#define RIGHT_LINE 1
+#define LEFT_LINE 1
+#define RIGHT_LINE 2
 
 
 /// 7/13 new

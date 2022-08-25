@@ -65,7 +65,9 @@ void main_task(intptr_t unused)
     SceneControl &scenecontrol = SceneControl::getInstance();
     int8 retChk = SYS_NG;
     while(1){
+        car_data.update();
         retChk = scenecontrol.run();
+        scenecontrol.SceneSwitch();
         if(retChk == ALL_SCENE_END){
             break;
         }
