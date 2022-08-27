@@ -1,36 +1,24 @@
 #include "../../include/Judge/PaternJudge.h"
 
 PaternJudge::PaternJudge(){
-    slalomPatarn=0;
-    garagePatarn=0;
+    
+    judgement.push_back(new PaternSlalom());
+    judgement.push_back(new PaternGarage());
 }
 PaternJudge::~PaternJudge(){
-//    delete comparison;
+    for(it=judgement.begin();it != std::end(judgement); ++it){
+        delete *it;
+    }
 }
 int8 PaternJudge::Judge(int8 _patern){
     int8 paternChk=0;
-//    Comparison comparison;
-    if(_patern==slalom){
-//        comparison=new PaternSlalom;
-    }
-    else if(_patern==garage){
-//        comparison=new PaternGarage;
-    }
-
-//    paternChk=comparison.decide();
-    
-    if(_patern==slalom){
-        slalomPatarn=paternChk;
-        return SYS_OK;
-    }    
-    else if(_patern==garage){
-        garagePatarn=paternChk;
-        return SYS_OK;
-    }
+    paternChk=judgement[_patern]->decide();
+    patern[_patern]=paternChk;
+    return SYS_OK;
 }
 int8 PaternJudge::getSlalom(){
-    return slalomPatarn;
+    return patern[slalom];
 }
 int8 PaternJudge::getGarage(){
-    return garagePatarn;
+    return  patern[garage];
 }

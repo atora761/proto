@@ -1,31 +1,31 @@
 #include "../../include/Judge/PaternGarage.h"
 #include "../../include/ColorSpace/ColorSpace.h"
-#include "../../include/Judge/UseJudgement.h"
-/*
+
 PaternGarage::PaternGarage(){}
 
 PaternGarage::~PaternGarage(){}
 
 int8_t PaternGarage::decide(){
-    int8 garagestate=0;
     ColorSpace color = ColorSpace::getInstance();
     rgb=color.getRGB();
+    //printf("r:%d,g:%d,b:%d\n",rgb.r,rgb.g,rgb.b);
     //黄色
-    if(rgb.r>100&&rgb.g>50&&rgb.b>50){
-        garagestate=YELLOWTHRESHOL;
+    if(rgb.r>100&&rgb.g>100&&rgb.b<30){
+        return YELLOWTHRESHOL;
     }
     //赤
-    if(rgb.r>100){
-        garagestate=REDTHRESHOLD;
+    else if(rgb.r>90){
+        return REDTHRESHOLD;
     }
     //緑
-    if(rgb.g>100){
-        garagestate=GREENTHRESHOLD;
+    else if(rgb.g>70){
+        return GREENTHRESHOLD;
     }
     //青
-    if(rgb.b>100){
-        garagestate=BLUETHRESHOLD;
+    else if(rgb.b>100){
+        return BLUETHRESHOLD;
     }
-    return garagestate;
+    else{
+        return 0;
+    }
 }
-*/

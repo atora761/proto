@@ -25,6 +25,9 @@
 /* ------------------------------------------------------------------------- */
 UltraSonic::UltraSonic( void )
 {
+	/* 超音波センサクラスの作成 */
+	UltraSonicSensor USS = UltraSonicSensor::getInstance();
+	USS.init();
 	prevDisCM	= 0;							/* 0もなにか定数にする？？	 */
 	critDisCM	= 0;							/* 0もなにか定数にする？？	 */
 	distanceMM	= 0;							/* 0もなにか定数にする？？	 */
@@ -70,7 +73,6 @@ int8_t UltraSonic::update( void ) {
 
 	/* 前回の距離(cm単位)の更新 */
 	prevDisCM = distanceCM;
-
 	/* 距離(cm単位)の取得 */
 	distanceCM = USS.getDistance();
 	calc();

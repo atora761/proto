@@ -31,7 +31,7 @@ int8 ColorSpace::update(){
     HSV hsvdata;
     rgb = color_sensor.getRGB();
     hsv = hsvdata.convert(rgb);
-    printf("カラーセンサー：%d\n",rgb.b);
+
     return SYS_OK;
 }
 RGB_DATA ColorSpace::getRGB(){
