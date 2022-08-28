@@ -7,6 +7,8 @@
 //コンストラクタ
 SceneControl::SceneControl(){
     error     = SYS_NG;
+    slalom_patern=0;
+    garage_card=0;
     error = init();
     if(error != SYS_OK){
     }
@@ -30,33 +32,42 @@ int8_t SceneControl::init(){
 }
 
 int8_t SceneControl::run(){
-    PaternJudge &paternjudge = PaternJudge::getInstance();
+    PaternJudge& paternjudge = PaternJudge::getInstance();
     SceneInfo& sceneInfo    = SceneInfo::getInstance();
     //シナリオ内全シーンが終了している場合
     if(now_scene > scene_num){
         now_scenario++;
         if(now_scenario == 1){
             //スラロームのシーン数取得
+            scene_num = sceneInfo.get(SLALOM,common);
+            now_scene = 1;
+        }
+        if(now_scenario == 2){
+            slalom_patern=paternjudge.getSlalom();
+            //スラロームのシーン数取得
             if(paternjudge.getSlalom() == 1){
                 scene_num = sceneInfo.get(SLALOM,pattern1);
             }else{
                 scene_num = sceneInfo.get(SLALOM,pattern2);
             }
-            printf("スラロームシーン数%d\n",scene_num);
             now_scene = 1;
         }
-        if(now_scenario == 2){
+        if(now_scenario == 3){
+            //スラロームのシーン数取得
+            scene_num = sceneInfo.get(GARAGE,common);
+            now_scene = 1;
+        }
+        if(now_scenario == 4){
             //ガレージのシーン数取得
             if(paternjudge.getGarage() == 1){
                 scene_num = sceneInfo.get(GARAGE,pattern1);
             }else{
                 scene_num = sceneInfo.get(GARAGE,pattern2);
             }
-            printf("ガレージシーン数%d\n",scene_num);
             now_scene = 1;
         }
         //全シナリオが終了している場合
-        if(now_scenario > 2){
+        if(now_scenario > 4){
             printf("scene_all_finish\n");
             return ALL_SCENE_END;
         }
@@ -68,6 +79,7 @@ int8_t SceneControl::run(){
             sceneData = sceneInfo.get(TIMEATTACK,now_scene,common);
             break;
         case 1:
+            sceneData = sceneInfo.get(SLALOM,now_scene,pattern1);
             //スラローム
             if(paternjudge.getSlalom() == 1){
                 sceneData = sceneInfo.get(SLALOM,now_scene,pattern1);
@@ -91,12 +103,7 @@ int8_t SceneControl::run(){
         printf("task_run_error\n");
         ext_tsk();
     }
-    //パターン判定
-    error = paternjudge.Judge(1);
-    if(error != SYS_OK){
-        printf("patern_judge_error\n");
-        ext_tsk();
-    }
+
     return SYS_OK;
 }
 
@@ -109,6 +116,14 @@ int8_t SceneControl::SceneSwitch(){
     if(judge_bool == 1){
         now_scene++;
         printf("scene_change\n");
+    }
+    PaternJudge& paternjudge = PaternJudge::getInstance();
+    //パターン判定
+    if(sceneData.paterndecisiondata.slalom_decision){
+        paternjudge.Judge(0);
+    }
+    if(sceneData.paterndecisiondata.garage_decision){
+        paternjudge.Judge(1);
     }
     
     return SYS_OK;

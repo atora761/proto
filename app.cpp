@@ -10,11 +10,12 @@
 #include "ev3api.h"
 #include "app.h"
 #include "etroboc_ext.h"
+#include "../../include/Sonic/UltraSonic.h"
 #include "./workspace/include/Action/LineTrace.h"
 #include "./workspace/include/Action/Curve.h"
 #include "./workspace/include/Action/Straight.h"
 #include "./workspace/include/CarData/CarData.h"
-#include "./workspace/include/Scene/SceneControl.h"\
+#include "./workspace/include/Scene/SceneControl.h"
 
 #if defined(BUILD_MODULE)
 #include "module_cfg.h"
@@ -63,8 +64,12 @@ void main_task(intptr_t unused)
 	printf("change_task_start\n");
 	CarData&            car_data    = CarData::getInstance();
     SceneControl &scenecontrol = SceneControl::getInstance();
+    ColorSpace&		  color_space	= ColorSpace::getInstance();
+    UltraSonic&     ultrasonic=UltraSonic::getInstance();
     int8 retChk = SYS_NG;
     while(1){
+        ultrasonic.update();
+        color_space.update();
         car_data.update();
         retChk = scenecontrol.run();
         scenecontrol.SceneSwitch();

@@ -40,6 +40,7 @@ APPL_CXXOBJS += \
 				RGBDecision.o\
 				UltraSonicDecision.o\
 				UseJudgement.o\
+				Correction.o\
 #
 SRCLANG := c++
 
@@ -67,6 +68,7 @@ APPL_DIRS +=\
 	$(mkfile_path)workspace/src/FileOp\
 	$(mkfile_path)workspace/src/SceneInfo\
 	$(mkfile_path)workspace/src/Sonic\
+	$(mkfile_path)workspace/src/Correction\
 
 INCLUDES +=\
 	-I$(mkfile_path)workspace/include/Action\
@@ -81,6 +83,7 @@ INCLUDES +=\
 	-I$(mkfile_path)workspace/include/FileOp\
 	-I$(mkfile_path)workspace/include/SceneInfo\
 	-I$(mkfile_path)workspace/include/Sonic\
+	-I$(mkfile_path)workspace/include/Correction\
 
 COPTS += -I$(ETROBO_HRP3_WORKSPACE)/etroboc_common
 COPTS += -DMAKE_EV3

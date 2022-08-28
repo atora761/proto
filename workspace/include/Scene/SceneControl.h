@@ -12,6 +12,8 @@ class SceneControl{
     int16_t scene_num;   //シーン数
     int16_t now_scene;   //現シーン番号
     int8_t  now_scenario; //現在シナリオ
+    int8_t slalom_patern;
+    int8_t garage_card;
     SceneData sceneData;
     public:
     //コンストラクタ

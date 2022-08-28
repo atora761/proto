@@ -8,9 +8,9 @@
 #include <string>
 #include "ev3api.h"
 #include "system.h"
-class PaternSlalom 
+#include "../../include/Judge/UseJudgement.h"
+class PaternSlalom  : public UseJudgement
 {
-    /*
 private:
     int16 distance;
 public:
@@ -19,6 +19,5 @@ public:
     ~PaternSlalom();
 
     int8_t decide(); 
-    */
 };
 
