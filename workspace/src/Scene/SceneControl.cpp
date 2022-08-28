@@ -79,6 +79,7 @@ int8_t SceneControl::run(){
             sceneData = sceneInfo.get(TIMEATTACK,now_scene,common);
             break;
         case 1:
+        case 2:
             sceneData = sceneInfo.get(SLALOM,now_scene,pattern1);
             //スラローム
             if(paternjudge.getSlalom() == 1){
@@ -87,7 +88,8 @@ int8_t SceneControl::run(){
                 sceneData = sceneInfo.get(SLALOM,now_scene,pattern2);
             }
             break;
-        case 2:
+        case 3:
+        case 4:
             //ガレージ
             if(paternjudge.getGarage() == 1){
                 sceneData = sceneInfo.get(GARAGE,now_scene,pattern1);
