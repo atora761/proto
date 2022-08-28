@@ -146,10 +146,17 @@ struct CorrectionData
 	DecisionData decisionData;	// 判定情報クラス
 };
 
+struct PaternDecisionData
+{
+	unsigned char slalom_decision;			// スラロームパターンフラグ
+	unsigned char garage_decision;			// ガレージパターンフラグ
+};
+
 struct SceneData
 {
 	int num;
 	MoveData moveData;
 	DecisionData decisionData;
 	CorrectionData correctionData;
+	PaternDecisionData paterndecisiondata;
 };

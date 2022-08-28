@@ -37,7 +37,6 @@ HSV_DATA HSV::convert(RGB_DATA rgb){
         }else{
             h=(double)(60*((double)(green-bule)/(double)(red-green)));
             s=(double)((double)(red-green)/red)*255;
-            printf("%lf\n",h);
         }    
         hsv_Data.v=red;
     }

@@ -1,5 +1,5 @@
 #pragma once
-
+#include "../../include/system/system.h"
 class UseJudgement
 {
 public:

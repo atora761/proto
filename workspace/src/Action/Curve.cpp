@@ -20,7 +20,6 @@ int8_t Curve::run(int32_t speed){
     if( speed < -100 || speed > 100 ) {
         return SYS_PARAM;
     }
-
     // 変数宣言
     CarData&            car_data    = CarData::getInstance();
     TrapezoidControl&   trapezoid   = TrapezoidControl::getInstance();
@@ -79,7 +78,6 @@ int8_t Curve::run(int32_t speed){
     /// 加減速どうこう
 	trapezoid.setVelocity(speed);
 	motor_revision = trapezoid.run(circle);
-
     /// 比率計算
     // 左カーブの比率
 	
@@ -95,7 +93,6 @@ int8_t Curve::run(int32_t speed){
     // カーブの比率計算
     motor_power.left = motor_revision * ratio_left;
     motor_power.right = motor_revision * ratio_right;
-
 	//printf("%d,%d\n",motor_power.left,motor_power.right);
 	steering.run(motor_power);
 
