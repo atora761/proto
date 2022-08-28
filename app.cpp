@@ -14,7 +14,7 @@
 #include "./workspace/include/Action/Curve.h"
 #include "./workspace/include/Action/Straight.h"
 #include "./workspace/include/CarData/CarData.h"
-#include "./workspace/include/Scene/SceneControl.h"\
+#include "./workspace/include/Scene/SceneControl.h"
 
 #if defined(BUILD_MODULE)
 #include "module_cfg.h"
