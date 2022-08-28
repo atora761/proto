@@ -10,12 +10,15 @@
 #include "ev3api.h"
 #include "app.h"
 #include "etroboc_ext.h"
-#include "../../include/Sonic/UltraSonic.h"
 #include "./workspace/include/Action/LineTrace.h"
 #include "./workspace/include/Action/Curve.h"
 #include "./workspace/include/Action/Straight.h"
 #include "./workspace/include/CarData/CarData.h"
 #include "./workspace/include/Scene/SceneControl.h"
+#include "../../include/CarData/CarData.h"
+
+#include "../../include/Sonic/UltraSonic.h"
+#include "../../include/ColorSpace/ColorSpace.h"
 
 #if defined(BUILD_MODULE)
 #include "module_cfg.h"
@@ -61,18 +64,16 @@ void start_task(intptr_t unused)
 /* メインタスク */
 void main_task(intptr_t unused)
 {
-	printf("change_task_start\n");
 	CarData&            car_data    = CarData::getInstance();
     SceneControl &scenecontrol = SceneControl::getInstance();
-    ColorSpace&		  color_space	= ColorSpace::getInstance();
-    UltraSonic&     ultrasonic=UltraSonic::getInstance();
     int8 retChk = SYS_NG;
+    sta_cyc(SONIC_PERIOD);
+    sta_cyc(COLOR_PERIOD);
+    sta_cyc(CARDATA_PERIOD);
     while(1){
-        ultrasonic.update();
-        color_space.update();
         car_data.update();
         retChk = scenecontrol.run();
-        scenecontrol.SceneSwitch();
+        change_task();
         if(retChk == ALL_SCENE_END){
             break;
         }
@@ -81,7 +82,10 @@ void main_task(intptr_t unused)
         }
         tslp_tsk(10 * 1000U);
     }
-   	
+    
+   	stp_cyc(SONIC_PERIOD);
+    stp_cyc(COLOR_PERIOD);
+    stp_cyc(CARDATA_PERIOD);
 	ETRoboc_notifyCompletedToSimulator();
     ext_tsk();
 }
@@ -101,3 +105,33 @@ void change_task(intptr_t unused)
     }
     ext_tsk();
 }
+
+/* 周期タスク */
+void sonic_task(intptr_t exinf)
+{
+    int8 retChk = SYS_NG;
+    UltraSonic &ultrasonic = UltraSonic::getInstance();
+    retChk = ultrasonic.update();
+    if( retChk != SYS_OK ){
+    }
+}
+
+void color_task(intptr_t exinf)
+{
+    int8 retChk = SYS_NG;
+    ColorSpace &colorspace = ColorSpace::getInstance();
+    retChk = colorspace.update();
+    if( retChk != SYS_OK ){
+    }
+}
+
+void cardata_task(intptr_t exinf)
+{
+    int8 retChk = SYS_NG;
+    CarData &cardata = CarData::getInstance();
+    retChk = cardata.update();
+    if( retChk != SYS_OK ){
+    }
+}
+
+
