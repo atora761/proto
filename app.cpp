@@ -73,10 +73,10 @@ void main_task(intptr_t unused)
     while(1){
         car_data.update();
         retChk = scenecontrol.run();
-        change_task();
         if(retChk == ALL_SCENE_END){
             break;
         }
+        retChk = scenecontrol.SceneSwitch();
         if(retChk == SYS_NG){
             ext_tsk();
         }
@@ -87,22 +87,6 @@ void main_task(intptr_t unused)
     stp_cyc(COLOR_PERIOD);
     stp_cyc(CARDATA_PERIOD);
 	ETRoboc_notifyCompletedToSimulator();
-    ext_tsk();
-}
-
-/* シーン切り替えタスク */
-void change_task(intptr_t unused)
-{
-    int8 retChk = SYS_NG;
-    SceneControl &scenecontrol = SceneControl::getInstance();
-	printf("change_task_start\n");
-
-    //シーン切り替え
-    retChk = scenecontrol.SceneSwitch();
-    if(retChk != SYS_OK){
-		printf("scene_switch_error\n");
-        ext_tsk();
-    }
     ext_tsk();
 }
 
