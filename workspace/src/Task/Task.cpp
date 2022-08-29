@@ -18,18 +18,22 @@ int8_t Task::run(){
     if(moveData.motion == 1){
         Action* action = new Straight(moveData.coordinate);
         retChk = action->run(moveData.speed);
+        delete action;
     }
     else if(moveData.motion == 2){
         Action* action = new Curve(moveData.radius,moveData.direction,moveData.coordinate);
         retChk = action->run(moveData.speed);
+        delete action;
     }
     else if(moveData.motion == 3){
         Action* action = new Turn(moveData.direction);
         retChk = action->run(moveData.speed);
+        delete action;
     }
     else if(moveData.motion == 4){
         Action* action =new LineTrace(moveData.gain,moveData.target_val,moveData.edge,moveData.coordinate);
         retChk = action->run(moveData.speed);
+        delete action;
     }
     else{
         printf("motion_error\n");
@@ -54,7 +58,7 @@ int8_t Task::run(){
 	
 	for(int8 i = 0; i < sizeof(correctionData.correction); ++i){
 		if ( correctionData.correction[i] >= 1 ) {
-			printf("coorection_start\n");
+			//printf("coorection_start\n");
 			Correction correction;
 			correction.run(correctionData);
 			break;

@@ -106,6 +106,8 @@ int8_t SceneControl::run(){
         ext_tsk();
     }
 
+    delete task;
+
     return SYS_OK;
 }
 
@@ -113,7 +115,7 @@ int8_t SceneControl::SceneSwitch(){
     int8_t judge_bool = 0;
     Judgement judgement;
     //シーン切り替え判定
-    printf("scene_change_judge\n");
+    //printf("scene_change_judge\n");
     judge_bool=judgement.judge(sceneData.decisionData);
     if(judge_bool == 1){
         now_scene++;
