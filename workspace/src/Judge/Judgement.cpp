@@ -33,8 +33,6 @@ int8_t Judgement::judge( DecisionData decisiondata ) {
 		}
 	}
 
-	printf("judge = %d\n",judge_cnt);
-
 	//判定結果
 	if ( judge_cnt == 1 ) {//単独判定
 
@@ -49,11 +47,8 @@ int8_t Judgement::judge( DecisionData decisiondata ) {
 	}
 	else if ( judge_cnt >= 2 ) {//複数判定
 
-		printf("logic = %d\n",decisiondata.logic);
 
 		if ( decisiondata.logic == LOGICAL_CONJUNCTION ) {//AND(両方
-
-			printf("nannka\n");
 
 			if ( ( result_check[ 0 ] == RESULT_TRUE ) && ( result_check[ 1 ] == RESULT_TRUE ) ) {
 
