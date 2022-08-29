@@ -6,9 +6,9 @@
 #define COLORSENSOR_POS 60
 #define ULTRASONICSENSOR_POS 50
 
-#define RGB 2
-#define HSV 3
-#define UltraSonic 4
+#define RGB 4
+#define HSV 5
+#define UltraSonic 6
 
 #define XPOS 0
 #define YPOS 1

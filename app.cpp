@@ -56,7 +56,10 @@ void start_task(intptr_t unused)
         }
         tslp_tsk(10 * 1000U);
     }
-
+    ColorSpace &colorspace = ColorSpace::getInstance();
+    colorspace.update();
+	UltraSonic &ultrasonic = UltraSonic::getInstance();
+    ultrasonic.update();
     act_tsk(MAIN_TASK);
     ext_tsk();
 }
