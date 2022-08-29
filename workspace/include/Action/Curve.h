@@ -9,8 +9,8 @@
 #include "../Steering/Steering.h"
 
 #define PAI         (3.14f)         // 円周率
-#define LEFT_CURVE  (0)             // 左カーブ
-#define RIGHT_CURVE (1)             // 右カーブ
+#define LEFT_CURVE  (1)             // 左カーブ
+#define RIGHT_CURVE (2)             // 右カーブ
 
 #ifdef  EV3
 //#define CAR_WIDTH   (90)            // 車体幅(ごめんしらん)
