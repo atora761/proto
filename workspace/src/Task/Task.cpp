@@ -14,7 +14,7 @@ Task::~Task() {}
 
 int8_t Task::run(){
     int8_t retChk = SYS_NG;
-    printf("動作番号:%d",moveData.motion);
+    //printf("動作番号:%d",moveData.motion);
     if(moveData.motion == 1){
         Action* action = new Straight(moveData.coordinate);
         retChk = action->run(moveData.speed);
