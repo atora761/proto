@@ -32,6 +32,11 @@ float TrapezoidControl::run(float deviation)
 {
 	int8_t ret = 0.0f;								/* 戻り値チェック変数		 */
 
+	//
+	// 台形調査
+	//
+	return taraget;
+
 	/* 走行距離が変化した時に真 */
 	if (pre_deviation < deviation) {
 		distance = deviation;
