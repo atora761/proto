@@ -63,11 +63,11 @@ int8_t LineTrace::run(int32_t speed)
 	motor_revision = trapezoid.run(distance);
 
 	if ( edge == LEFT_LINE ){
-		motor_power.right =speed- pid_revision;
-		motor_power.left  =speed + pid_revision;
+		motor_power.right =motor_revision - pid_revision;
+		motor_power.left  =motor_revision + pid_revision;
 	} else if ( edge == RIGHT_LINE ){
-		motor_power.right =speed + pid_revision;
-		motor_power.left  =speed - pid_revision;
+		motor_power.right =motor_revision + pid_revision;
+		motor_power.left  =motor_revision - pid_revision;
 	}
 	steering.run(motor_power);
 

@@ -37,15 +37,37 @@ float TrapezoidControl::run(float deviation)
 		distance = deviation;
 		start = pre_target;
 		run_time = 0.0f;
-	}
-	
-	pre_deviation = deviation;
 
-	/* 台形制御計算 */
-	ret = calc();
-	if (ret != SYS_OK) {
-		return SYS_NG;
+		/* 台形制御計算 */
+		ret = calc();
+		if (ret != SYS_OK) {
+			return SYS_NG;
+		}
 	}
+
+	/* 偏差が大きかったら真 */
+	while (deviation < (distance - ad.x(run_time))) {
+		/* 偏差が無くなったら真 */
+		if (run_time > ad.t_end()) {
+			break;
+		}
+		run_time += EXECTION_COUNT;
+	}
+
+	/* 加減速時間を超えたら真 */
+	if (run_time > ad.t_end()) {
+		/* 目標速度を代入 */
+		motor_revision = target;
+		//return SYS_OK;
+
+		/* テスト用の戻り値 */
+		//return SYS_NG;
+	}
+
+	/* 瞬間速度を代入 */
+	motor_revision = ad.v(run_time);
+
+	pre_deviation = deviation;
 
 	/* 実行回数を加算 */
 	run_time += EXECTION_COUNT;
@@ -90,30 +112,6 @@ int8_t TrapezoidControl::calc(void)
 
 	/* 曲線作成 */
 	ad.reset(JERK_MAX, ACCEL_MAX, V_MAX_WHEEL, v_start, v_target, distance, 0, 0);
-
-	/* 偏差が大きかったら真 */
-	while (pre_deviation < (distance - ad.x(run_time))) {
-		/* 偏差が無くなったら真 */
-		if (run_time > ad.t_end()) {
-			break;
-		}
-		run_time += EXECTION_COUNT;
-	}
-
-
-	/* 加減速時間を超えたら真 */
-	if (run_time > ad.t_end()) {
-		/* 目標速度を代入 */
-		motor_revision = target;
-		//return SYS_OK;
-
-		/* テスト用の戻り値 */
-		//return SYS_NG;
-	}
-
-	/* 瞬間速度を代入 */
-	motor_revision = ad.v(run_time);
-
 
 	return SYS_OK;
 }
