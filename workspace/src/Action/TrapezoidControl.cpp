@@ -57,7 +57,7 @@ float TrapezoidControl::run(float deviation)
 		run_time += EXECTION_COUNT;
 	}
 
-	printf("%f,%f,%f,%f,%f,",deviation,distance,run_time,ad.t_end());
+	//printf("%f,%f,%f,%f,%f,",deviation,distance,run_time,ad.t_end());
 
 	/* 瞬間速度を代入 */
 	motor_revision = ad.v(run_time);
@@ -69,7 +69,7 @@ float TrapezoidControl::run(float deviation)
 
 	motor_revision = conversion();
 
-	printf("%f,",motor_revision);
+	//printf("%f,",motor_revision);
 
 	printf("\n");
 
