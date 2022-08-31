@@ -17,8 +17,8 @@
 
 using namespace std;
 
-#define DEBUG_EV3
-//#define DEBUG_SPIKE
+//#define DEBUG_EV3
+#define DEBUG_SPIKE
 
 #define JERK_MAX		(  100.0f)				/* �ő���x					 */
 #define ACCEL_MAX		(  200.0f)				/* �ő�����x				 */
