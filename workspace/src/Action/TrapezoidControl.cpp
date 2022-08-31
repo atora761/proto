@@ -33,10 +33,9 @@ float TrapezoidControl::run(float deviation)
 {
 	int8_t ret = 0.0f;								/* 戻り値チェック変数		 */
 
-	//printf("%f,%f,%f,",deviation,run_time,ad.t_end());
-
 	/* 走行距離が変化した時に真 */
-	if (run_time > ad.t_end() || time_fst == 0.0f) {
+	//if (run_time > ad.t_end() || time_fst == 0.0f) {
+	if (pre_deviation < deviation) {
 		time_fst = 1.0f;
 		distance = (double)deviation;
 		start = pre_target;
@@ -49,6 +48,17 @@ float TrapezoidControl::run(float deviation)
 		}
 	}
 
+	/* 偏差が大きかったら真 */
+	while (deviation < (distance - ad.x(run_time))) {
+		/* 偏差が無くなったら真 */
+		if (run_time > ad.t_end()) {
+			break;
+		}
+		run_time += EXECTION_COUNT;
+	}
+
+	printf("%f,%f,%f,%f,%f,",deviation,distance,run_time,ad.t_end());
+
 	/* 瞬間速度を代入 */
 	motor_revision = ad.v(run_time);
 
@@ -58,6 +68,10 @@ float TrapezoidControl::run(float deviation)
 	run_time += EXECTION_COUNT;
 
 	motor_revision = conversion();
+
+	printf("%f,",motor_revision);
+
+	printf("\n");
 
 	return motor_revision;
 }
