@@ -9,8 +9,8 @@
 
 
 #define SYS_OK 0    //正常終了
-#define SYS_NG 1    //異常終了
-#define SYS_PARAM 2 //引数エラー
+#define SYS_NG -1    //異常終了
+#define SYS_PARAM -2 //引数エラー
 #define ALL_SCENE_END 3 //全シナリオ終了
 #define ABOVE 1	//以上
 #define BELOW 2

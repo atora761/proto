@@ -35,7 +35,7 @@ float TrapezoidControl::run(float deviation)
 	//
 	// 台形調査
 	//
-	return taraget;
+	return target;
 
 	/* 走行距離が変化した時に真 */
 	if (pre_deviation < deviation) {
