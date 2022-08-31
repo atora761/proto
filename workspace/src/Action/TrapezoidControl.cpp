@@ -15,6 +15,7 @@ TrapezoidControl::TrapezoidControl(){
 	distance = 0;
 	motor_revision = 0;
 	pre_deviation = 0;
+	time_fst = 0;
 }
 
 /**
@@ -32,14 +33,12 @@ float TrapezoidControl::run(float deviation)
 {
 	int8_t ret = 0.0f;								/* 戻り値チェック変数		 */
 
-	//
-	// 台形調査
-	//
-	return taraget;
+	//printf("%f,%f,%f,",deviation,run_time,ad.t_end());
 
 	/* 走行距離が変化した時に真 */
-	if (pre_deviation < deviation) {
-		distance = deviation;
+	if (run_time > ad.t_end() || time_fst == 0.0f) {
+		time_fst = 1.0f;
+		distance = (double)deviation;
 		start = pre_target;
 		run_time = 0.0f;
 
@@ -48,25 +47,6 @@ float TrapezoidControl::run(float deviation)
 		if (ret != SYS_OK) {
 			return SYS_NG;
 		}
-	}
-
-	/* 偏差が大きかったら真 */
-	while (deviation < (distance - ad.x(run_time))) {
-		/* 偏差が無くなったら真 */
-		if (run_time > ad.t_end()) {
-			break;
-		}
-		run_time += EXECTION_COUNT;
-	}
-
-	/* 加減速時間を超えたら真 */
-	if (run_time > ad.t_end()) {
-		/* 目標速度を代入 */
-		motor_revision = target;
-		//return SYS_OK;
-
-		/* テスト用の戻り値 */
-		//return SYS_NG;
 	}
 
 	/* 瞬間速度を代入 */
@@ -109,8 +89,6 @@ int8_t TrapezoidControl::setVelocity(float velocity)
 */
 int8_t TrapezoidControl::calc(void)
 {
-	float v_target = 0;							/* 目標速度					 */
-	float v_start = 0;							/* 初速度					 */
 
 	v_target = (target / VELOCITY_MAX) * V_MAX_WHEEL;
 	v_start = (start / VELOCITY_MAX) * V_MAX_WHEEL;
@@ -129,7 +107,7 @@ int8_t TrapezoidControl::calc(void)
 float TrapezoidControl::conversion() {
 	float ret_conv = 0.0f;						/* 変換後戻り値				 */
 
-	ret_conv = (float)((motor_revision * VELOCITY_MAX) / V_MAX_WHEEL);
+	ret_conv = (float)(((double)motor_revision * VELOCITY_MAX) / V_MAX_WHEEL);
 
 	return ret_conv;
 }

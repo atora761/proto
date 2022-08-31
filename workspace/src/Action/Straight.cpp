@@ -35,6 +35,7 @@ int8_t Straight::run(int32_t speed)
 	// 目標座標までの距離を算出し台形制御に現在速度を取得する
 	trapezoid.setVelocity(speed);
 	current_coordinate = car_data.getPos();
+
 	distance = std::sqrt(std::pow(current_coordinate.x - target_coordinate.x,2)+
 						 std::pow(current_coordinate.y - target_coordinate.y,2));
 

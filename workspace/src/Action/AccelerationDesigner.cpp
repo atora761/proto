@@ -31,14 +31,14 @@ AccelDesigner::~AccelDesigner()
 	* @param t_start	�J�n���� [m]
 	* @return �Ȃ�
 */
-void AccelDesigner::reset(const float j_max, const float a_max, const float v_sat,
-	const float v_start, const float v_target, const float dist,
-	const float x_start, const float t_start)
+void AccelDesigner::reset(const double j_max, const double a_max, const double v_sat,
+	const double v_start, const double v_target, const double dist,
+	const double x_start, const double t_start)
 {
-	float v_max = 0.0f;							/* �ő呬�x					 */
-	float v_end = v_target;						/* �I�_���x					 */
-	float dist_min = 0.0f;						/* �ŒZ���s����				 */
-	float d_sum = 0.0f;							/* �K�v�Œ዗��				 */
+	double v_max = 0.0f;							/* �ő呬�x					 */
+	double v_end = v_target;						/* �I�_���x					 */
+	double dist_min = 0.0f;						/* �ŒZ���s����				 */
+	double d_sum = 0.0f;							/* �K�v�Œ዗��				 */
 
 	/* �ő呬�x�̉��u�� */
 	v_max = dist > 0 ? std::max({ v_start, v_sat, v_target }) : std::min({ v_start, -v_sat, v_target });

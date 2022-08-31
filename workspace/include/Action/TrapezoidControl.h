@@ -63,13 +63,16 @@ public:
 
 private:
 	AccelDesigner ad;
-	float run_time;
-	float start;
-	float target;
-	float distance;
-	float motor_revision;
-	float pre_deviation;
-	float pre_target;
+	double run_time;
+	double start;
+	double target;
+	double distance;
+	double motor_revision;
+	double pre_deviation;
+	double pre_target;
+	double time_fst;
+	double v_target = 0;							/* 目標速度					 */
+	double v_start = 0;							/* 初速度					 */
 
 	int8_t calc(void);
 

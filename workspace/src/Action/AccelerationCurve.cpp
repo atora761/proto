@@ -28,10 +28,10 @@ AccelCurve::~AccelCurve()
 	 * @param v_target	�ڕW���x [m/s]
 	 * @return �Ȃ�
  */
-void AccelCurve::reset(const float j_max, const float a_max, const float v_start, const float v_end)
+void AccelCurve::reset(const double j_max, const double a_max, const double v_start, const double v_end)
 {
-	float tc = 0.0f;							/* ����������				 */
-	float tm = 0.0f;							/* ����������				 */
+	double tc = 0.0f;							/* ����������				 */
+	double tm = 0.0f;							/* ����������				 */
 
 	/* �����t���ő�� */
 	am = (v_end > v_start) ? a_max : -a_max;
@@ -81,23 +81,23 @@ void AccelCurve::reset(const float j_max, const float a_max, const float v_start
 	* @param d		���s���� [m]
 	* @return �I�_���x
  */
-float AccelCurve::calcVelocityEnd(const float j_max, const float a_max,
-	const float vs, const float vt, const float d)
+double AccelCurve::calcVelocityEnd(const double j_max, const double a_max,
+	const double vs, const double vt, const double d)
 {
-	float tc			= 0.0f;					/* ����������				 */
-	float am			= 0.0f;					/* �ő�����x				 */
-	float jm			= 0.0f;					/* �ő���x					 */
-	float d_triangle	= 0.0f;					/* �������l					 */
-	float v_triangle	= 0.0f;					/* �������l					 */
-	float amtc			= 0.0f;					/* ���Z���x					 */
-	float D				= 0.0f;					/* 2���������̓r�����Z�s	 */
-	float sqrtD			= 0.0f;					/* 2����������2�捪			 */
-	float a				= 0.0f;					/* 3���������p�����[�^		 */
-	float b				= 0.0f;					/* 3���������p�����[�^		 */
-	float aaa			= 0.0f;					/* 3���������p�����[�^		 */
-	float c0			= 0.0f;					/* 3���������p�����[�^		 */
-	float c1			= 0.0f;					/* 3���������p�����[�^		 */
-	float c2			= 0.0f;					/* 3���������p�����[�^		 */
+	double tc			= 0.0f;					/* ����������				 */
+	double am			= 0.0f;					/* �ő�����x				 */
+	double jm			= 0.0f;					/* �ő���x					 */
+	double d_triangle	= 0.0f;					/* �������l					 */
+	double v_triangle	= 0.0f;					/* �������l					 */
+	double amtc			= 0.0f;					/* ���Z���x					 */
+	double D				= 0.0f;					/* 2���������̓r�����Z�s	 */
+	double sqrtD			= 0.0f;					/* 2����������2�捪			 */
+	double a				= 0.0f;					/* 3���������p�����[�^		 */
+	double b				= 0.0f;					/* 3���������p�����[�^		 */
+	double aaa			= 0.0f;					/* 3���������p�����[�^		 */
+	double c0			= 0.0f;					/* 3���������p�����[�^		 */
+	double c1			= 0.0f;					/* 3���������p�����[�^		 */
+	double c2			= 0.0f;					/* 3���������p�����[�^		 */
 
 	/* ���x���Ȑ��ƂȂ镔���̎��Ԃ����� */
 	tc = a_max / j_max;
@@ -134,7 +134,7 @@ float AccelCurve::calcVelocityEnd(const float j_max, const float a_max,
 	}
 	else {
 		/* ���[�g�̒������̂Ƃ� */
-		return (d > 0 ? 1 : -1) * (std::pow(std::complex<float>(c1 / 2, std::sqrt(-c0) / 2), float(1) / 3).real() * 2 - a) / 3;
+		return (d > 0 ? 1 : -1) * (std::pow(std::complex<double>(c1 / 2, std::sqrt(-c0) / 2), double(1) / 3).real() * 2 - a) / 3;
 	}
 }
 
@@ -147,14 +147,14 @@ float AccelCurve::calcVelocityEnd(const float j_max, const float a_max,
  * @param d		���s���� [m]
  * @return vm	�ő呬�x [m/s]
  */
-float AccelCurve::calcVelocityMax(const float j_max, const float a_max,
-	const float vs, const float ve, const float d)
+double AccelCurve::calcVelocityMax(const double j_max, const double a_max,
+	const double vs, const double ve, const double d)
 {
-	float tc = 0.0f;					/* ����������				 */
-	float am = 0.0f;					/* �ő�����x				 */
-	float amtc = 0.0f;					/* ���Z���x					 */
-	float D = 0.0f;						/* 2���������̓r�����Z�s	 */
-	float sqrtD = 0.0f;					/* 2����������2�捪			 */
+	double tc = 0.0f;					/* ����������				 */
+	double am = 0.0f;					/* �ő�����x				 */
+	double amtc = 0.0f;					/* ���Z���x					 */
+	double D = 0.0f;						/* 2���������̓r�����Z�s	 */
+	double sqrtD = 0.0f;					/* 2����������2�捪			 */
 
 	/* ���x���Ȑ��ƂȂ镔���̎��Ԃ����� */
 	tc = a_max / j_max;
@@ -183,14 +183,14 @@ float AccelCurve::calcVelocityMax(const float j_max, const float a_max,
  * @param v_end		�I�_���x [m/s]
  * @return d		�ψ� [m]
  */
-float AccelCurve::calcMinDistance(const float j_max, const float a_max,
-	const float v_start, const float v_end)
+double AccelCurve::calcMinDistance(const double j_max, const double a_max,
+	const double v_start, const double v_end)
 {
-	float tc	= 0.0f;					/* ����������				 */
-	float tm	= 0.0f;					/* ����������				 */
-	float t_all = 0.0f;					/* ������					 */
-	float am	= 0.0f;					/* �ő�����x				 */
-	float jm	= 0.0f;					/* �ő���x					 */
+	double tc	= 0.0f;					/* ����������				 */
+	double tm	= 0.0f;					/* ����������				 */
+	double t_all = 0.0f;					/* ������					 */
+	double am	= 0.0f;					/* �ő�����x				 */
+	double jm	= 0.0f;					/* �ő���x					 */
 
 	/* �����t���ő�� */
 	am = (v_end > v_start) ? a_max : -a_max;
