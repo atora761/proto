@@ -38,6 +38,9 @@ int8_t Straight::run(int32_t speed)
 	distance = std::sqrt(std::pow(current_coordinate.x - target_coordinate.x,2)+
 						 std::pow(current_coordinate.y - target_coordinate.y,2));
 
+	printf("%f,%f,",current_coordinate.y , target_coordinate.y);
+	
+
 	motor_revision =speed;// trapezoid.run(distance);
 	motor_revision = trapezoid.run(distance);
 
@@ -45,5 +48,7 @@ int8_t Straight::run(int32_t speed)
 
 	steering.run(motor_power);
 
+	printf("%f,",motor_revision);
+	printf("\n");
 	return SYS_OK;
 }

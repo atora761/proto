@@ -18,22 +18,22 @@ public:
 	AccelCurve();
 	~AccelCurve();
 
-	void reset(const float j_max, const float a_max, const float v_start, const float v_end);
+	void reset(const double j_max, const double a_max, const double v_start, const double v_end);
 
-	static float calcVelocityEnd(const float j_max, const float a_max,
-		const float vs, const float vt, const float d);
+	static double calcVelocityEnd(const double j_max, const double a_max,
+		const double vs, const double vt, const double d);
 
-	static float calcVelocityMax(const float j_max, const float a_max,
-		const float vs, const float ve, const float d);
+	static double calcVelocityMax(const double j_max, const double a_max,
+		const double vs, const double ve, const double d);
 
-	static float calcMinDistance(const float j_max, const float a_max,
-		const float v_start, const float v_end);
+	static double calcMinDistance(const double j_max, const double a_max,
+		const double v_start, const double v_end);
 
 	// �R���X�g�����o�ϐ�
 	/**
 	* @brief ���x
 	*/
-	float j(const float t)const {
+	double j(const double t)const {
 		if (t <= t0)
 			return 0;
 		else if (t <= t1)
@@ -49,7 +49,7 @@ public:
 	/**
 	* @brief �����x
 	*/
-	float a(const float t) const {
+	double a(const double t) const {
 		if (t <= t0)
 			return 0;
 		else if (t <= t1)
@@ -65,7 +65,7 @@ public:
 	/**
 	* @brief ���x
 	*/
-	float v(const float t) const {
+	double v(const double t) const {
 		if (t <= t0)
 			return v0;
 		else if (t <= t1)
@@ -81,7 +81,7 @@ public:
 	/**
 	* @brief �ʒu
 	*/
-	float x(const float t) const {
+	double x(const double t) const {
 		if (t <= t0)
 			return x0 + v0 * (t - t0);
 		else if (t <= t1)
@@ -97,32 +97,32 @@ public:
 	/**
 	* @brief �I�_���� [s]
 	*/
-	float t_end() const { return t3; }
+	double t_end() const { return t3; }
 	/**
 	 * @brief �I�_���x [m/s]
 	 */
-	float v_end() const { return v3; }
+	double v_end() const { return v3; }
 	/**
 	 * @brief �I�_�ʒu [m]
 	 */
-	float x_end() const { return x3; }
+	double x_end() const { return x3; }
 	/**
 	 * @brief ���E�̎���
 	 */
-	float t_0() const { return t0; }
-	float t_1() const { return t1; }
-	float t_2() const { return t2; }
-	float t_3() const { return t3; }
+	double t_0() const { return t0; }
+	double t_1() const { return t1; }
+	double t_2() const { return t2; }
+	double t_3() const { return t3; }
 
 private:
 
 
 protected:
-	float jm;									/* ���x�萔 [m/s/s/s]		 */
-	float am;									/* �����x�萔 [m/s/s]		 */
-	float t0, t1, t2, t3;						/* �����萔 [s]				 */
-	float v0, v1, v2, v3;						/* ���x�萔 [m/s]			 */
-	float x0, x1, x2, x3;						/* �ʒu�萔 [m]				 */
+	double jm;									/* ���x�萔 [m/s/s/s]		 */
+	double am;									/* �����x�萔 [m/s/s]		 */
+	double t0, t1, t2, t3;						/* �����萔 [s]				 */
+	double v0, v1, v2, v3;						/* ���x�萔 [m/s]			 */
+	double x0, x1, x2, x3;						/* �ʒu�萔 [m]				 */
 };
 
 #endif
