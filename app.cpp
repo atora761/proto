@@ -9,7 +9,9 @@
  **/
 #include "ev3api.h"
 #include "app.h"
+#if defined(MAKE_SIM)
 #include "etroboc_ext.h"
+#endif
 #include "./workspace/include/Action/LineTrace.h"
 #include "./workspace/include/Action/Curve.h"
 #include "./workspace/include/Action/Straight.h"
@@ -19,6 +21,20 @@
 
 #include "../../include/Sonic/UltraSonic.h"
 #include "../../include/ColorSpace/ColorSpace.h"
+
+/*
+#if defined(MAKE_SIM)
+#elif defined(MAKE_EV3)
+#elif defined(MAKE_EV3)
+
+#elif defined(MAKE_SPIKE)
+
+#else
+
+#elif defined(MAKE_SPIKE)
+#else*/
+
+#endif
 
 #if defined(BUILD_MODULE)
 #include "module_cfg.h"
@@ -89,10 +105,13 @@ void main_task(intptr_t unused)
    	stp_cyc(SONIC_PERIOD);
     stp_cyc(COLOR_PERIOD);
     stp_cyc(CARDATA_PERIOD);
+#if defined(MAKE_SIM)
 	ETRoboc_notifyCompletedToSimulator();
+#endif
     ext_tsk();
 }
-
+ETRoboc_notifyCompletedToSimulator();
+    ext_tsk();
 /* 周期タスク */
 void sonic_task(intptr_t exinf)
 {
