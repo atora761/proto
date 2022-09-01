@@ -44,34 +44,35 @@ int8_t Curve::run(int32_t speed){
     area                = 0.0f;
     average             = 0.0f;
     height              = 0.0f;
+	_radius				= radius;
     current_coordinate  = car_data.getPos();
 
     /// 走行距離計算
     // 自己位置、目標座標感の距離計算
     // 直線距離 = √ (x2-x)(x2-x) + (y2-y)(y2-y)
     target_distance = std::sqrt( std::pow(target_coordinate.x - current_coordinate.x, 2) + std::pow(target_coordinate.y - current_coordinate.y, 2) );
-    if (target_distance > (radius * 2.0f)) {
-		radius = target_distance / 2.0f;
+    if (target_distance > (_radius * 2.0f)) {
+		_radius = target_distance / 2.0f;
 	}
     // 半径 半径 目標座標までの距離　から角度計算
     //        b*b + c*c - a*a
     // cosA = ----------------
     //              2bc
-    average = (radius + radius + target_distance) / 2.0f;
-	area = std::sqrt(average * (average - radius) * (average - radius) * (average - target_distance));
+    average = (_radius + _radius + target_distance) / 2.0f;
+	area = std::sqrt(average * (average - _radius) * (average - _radius) * (average - target_distance));
 
-	if (target_distance >= radius) {
+	if (target_distance >= _radius) {
 		height = (2.0f * area) / target_distance;
-		angle = 180.0f - (std::asin(height / radius) / PI * 180.0f) - (std::asin(height / radius ) / PI * 180.0f);
+		angle = 180.0f - (std::asin(height / _radius) / PI * 180.0f) - (std::asin(height / _radius ) / PI * 180.0f);
 	}
 	else {
-		height = 2.0f * (area / radius);
-		angle = std::asin(height / radius) / PI * 180.0f;
+		height = 2.0f * (area / _radius);
+		angle = std::asin(height / _radius) / PI * 180.0f;
 	}
 
     // 角度と辺の長さから扇形の円周を求める
     // 円周　＝　2πr * (角度 / 360)
-    circle = (2 * PI * radius * angle) / 360;
+    circle = (2 * PI * _radius * angle) / 360;
 
     //printf("%f\n",angle);
 
