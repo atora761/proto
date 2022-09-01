@@ -288,7 +288,7 @@ char SceneInfo::decode(vector<char>& fileData,vector<SceneData>& sceneData){
 		tmpData.paterndecisiondata.garage_point=atoi(data_ptr);
 		/// ------------------------------------------------------------------
 		sceneData.push_back(tmpData);
-	}while((data_ptr = strtok(NULL,","))==NULL);
+	}while((data_ptr = strtok(NULL,","))!=NULL);
 	return 0;
 }
 
