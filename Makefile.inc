@@ -44,6 +44,15 @@ APPL_CXXOBJS += \
 #
 SRCLANG := c++
 
+ifdef CONFIG_EV3RT_APPLICATION
+
+# Include libraries
+
+
+#include $(mkfile_path)/workspace/library/RyujiEv3/Makefile
+
+endif 
+
 # COPTS += -DMAKE_BT_DISABLE
 
 APPL_DIRS +=\
@@ -72,10 +81,11 @@ INCLUDES +=\
 	-I$(mkfile_path)workspace/include/Task\
 	-I$(mkfile_path)workspace/include/Judge\
 	-I$(mkfile_path)workspace/include/FileOp\
-	-I$(mkfile_path)worCOPTS += -I$(ETROBO_HRP3_WORKSPACE)/etroboc_commonkspace/include/SceneInfo\
+	-I$(mkfile_path)workspace/include/SceneInfo\
 	-I$(mkfile_path)workspace/include/Sonic\
 	-I$(mkfile_path)workspace/include/Correction\
 
+COPTS += -I$(ETROBO_HRP3_WORKSPACE)/etroboc_common
 COPTS += -DMAKE_EV3
 COPTS += -std=gnu++11
 COPTS += -fno-threadsafe-statics
