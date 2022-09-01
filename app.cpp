@@ -32,9 +32,9 @@
 #else
 
 #elif defined(MAKE_SPIKE)
-#else*/
+#else
 
-#endif
+#endif*/
 
 #if defined(BUILD_MODULE)
 #include "module_cfg.h"
