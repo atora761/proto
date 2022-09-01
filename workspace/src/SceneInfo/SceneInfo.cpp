@@ -281,8 +281,11 @@ char SceneInfo::decode(vector<char>& fileData,vector<SceneData>& sceneData){
 		data_ptr = strtok(NULL,",");
 		tmpData.paterndecisiondata.slalom_decision=atoi(data_ptr);
 		// ガレージパターンフラグ
-		data_ptr = strtok(NULL,"\n");
+		data_ptr = strtok(NULL,",");
 		tmpData.paterndecisiondata.garage_decision=atoi(data_ptr);
+		// ガレージ格納ポイント
+		data_ptr = strtok(NULL,"\n");
+		tmpData.paterndecisiondata.garage_point=atoi(data_ptr);
 		/// ------------------------------------------------------------------
 		sceneData.push_back(tmpData);
 		data_ptr = strtok(NULL,",");

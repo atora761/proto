@@ -8,7 +8,7 @@
 SceneControl::SceneControl(){
     error     = SYS_NG;
     slalom_patern=0;
-    garage_card=0;
+    garage_card=1;
     error = init();
     if(error != SYS_OK){
     }
@@ -79,8 +79,9 @@ int8_t SceneControl::run(){
             sceneData = sceneInfo.get(TIMEATTACK,now_scene,common);
             break;
         case 1:
+            sceneData = sceneInfo.get(SLALOM,now_scene,common);
+            break;
         case 2:
-            sceneData = sceneInfo.get(SLALOM,now_scene,pattern1);
             //スラローム
             if(paternjudge.getSlalom() == 1){
                 sceneData = sceneInfo.get(SLALOM,now_scene,pattern1);
@@ -89,9 +90,12 @@ int8_t SceneControl::run(){
             }
             break;
         case 3:
+            sceneData = sceneInfo.get(GARAGE,now_scene,common);
+            break;
         case 4:
             //ガレージ
-            if(paternjudge.getGarage() == 1){
+            garage_card=paternjudge.getGarage();
+            if(garage_card== 1){
                 sceneData = sceneInfo.get(GARAGE,now_scene,pattern1);
             }else{
                 sceneData = sceneInfo.get(GARAGE,now_scene,pattern2);
@@ -114,14 +118,21 @@ int8_t SceneControl::run(){
 int8_t SceneControl::SceneSwitch(){
     int8_t judge_bool = 0;
     Judgement judgement;
+    PaternJudge& paternjudge = PaternJudge::getInstance();
     //シーン切り替え判定
     //printf("scene_change_judge\n");
-    judge_bool=judgement.judge(sceneData.decisionData);
+    if(sceneData.paterndecisiondata.garage_point){
+        paternjudge.Judge(1);
+        if(paternjudge.getGarage()==garage_card){
+            now_scene++;
+        }
+    }else{
+        judge_bool=judgement.judge(sceneData.decisionData);
+    }
     if(judge_bool == 1){
         now_scene++;
         printf("scene_change\n");
     }
-    PaternJudge& paternjudge = PaternJudge::getInstance();
     //パターン判定
     if(sceneData.paterndecisiondata.slalom_decision){
         paternjudge.Judge(0);

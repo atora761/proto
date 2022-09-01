@@ -150,6 +150,7 @@ struct PaternDecisionData
 {
 	unsigned char slalom_decision;			// スラロームパターンフラグ
 	unsigned char garage_decision;			// ガレージパターンフラグ
+	unsigned char garage_point;			// ガレージパターンフラグ
 };
 
 struct SceneData
