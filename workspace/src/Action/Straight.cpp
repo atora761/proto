@@ -33,22 +33,42 @@ int8_t Straight::run(int32_t speed)
 	float		motor_revision  = 0.0f;
 	
 	// 目標座標までの距離を算出し台形制御に現在速度を取得する
-	trapezoid.setVelocity(speed);
+	// if文の追加　山田
+	if(0>speed){
+		//speedを絶対値に変換する
+		speed=speed*(-1);
+		trapezoid.setVelocity(speed);
 	current_coordinate = car_data.getPos();
 	distance = std::sqrt(std::pow(current_coordinate.x - target_coordinate.x,2)+
 						 std::pow(current_coordinate.y - target_coordinate.y,2));
 
-	printf("%f,%f,",current_coordinate.y , target_coordinate.y);
-	
-
 	motor_revision =speed;// trapezoid.run(distance);
+	
 	motor_revision = trapezoid.run(distance);
-
+	
+	//変換した値をマイナス値に変更
+	motor_revision=motor_revision*(-1);
 	motor_power.left = motor_power.right = motor_revision;
 
 	steering.run(motor_power);
 
-	printf("%f,",motor_revision);
-	printf("\n");
 	return SYS_OK;
+	}
+	else{
+
+		trapezoid.setVelocity(speed);
+		current_coordinate = car_data.getPos();
+		distance = std::sqrt(std::pow(current_coordinate.x - target_coordinate.x,2)+
+							std::pow(current_coordinate.y - target_coordinate.y,2));
+
+		motor_revision =speed;// trapezoid.run(distance);
+		
+		motor_revision = trapezoid.run(distance);
+
+		motor_power.left = motor_power.right = motor_revision;
+
+		steering.run(motor_power);
+
+		return SYS_OK;
+	}
 }
