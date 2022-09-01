@@ -35,6 +35,7 @@ int8_t Curve::run(int32_t speed){
     float           area;                   // 面積
 	float           average;                // 平均
 	float           height;                 // 高さ
+	float			_radius;
 
     // 変数初期化
     target_distance     = 0.0f;
