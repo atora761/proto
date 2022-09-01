@@ -110,8 +110,7 @@ void main_task(intptr_t unused)
 #endif
     ext_tsk();
 }
-ETRoboc_notifyCompletedToSimulator();
-    ext_tsk();
+
 /* 周期タスク */
 void sonic_task(intptr_t exinf)
 {
