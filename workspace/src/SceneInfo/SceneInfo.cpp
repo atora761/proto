@@ -10,6 +10,7 @@ char SceneInfo::init(){
 	// garage2.csv　パターン２
 	// リサイズ使うとコンパイルできやんねんけど
 	// ここで考えるのをやめた
+	//  実機用（EV3）  /ev3rt/res/timeAttack.csv
 	FileIO file;
 	vector<char> tabuf(file.getSize("timeAttack.csv"));
 	file.read(tabuf,"timeAttack.csv");
@@ -52,12 +53,11 @@ char SceneInfo::init(){
 
 /// いろいろ試したけどc++のライブラリ使うとエラーが出ることが多い
 char SceneInfo::decode(vector<char>& fileData,vector<SceneData>& sceneData){
-
+	int cnt=0;
 	char* data_ptr = NULL;
 	SceneData tmpData;
-
 	data_ptr = strtok(fileData.data(),",");
-	while(data_ptr != NULL){
+	do{
 		// シーン番号
 		tmpData.num=atoi(data_ptr);
 		/// 動作構造体代入-----------------------------------------------------
@@ -288,8 +288,7 @@ char SceneInfo::decode(vector<char>& fileData,vector<SceneData>& sceneData){
 		tmpData.paterndecisiondata.garage_point=atoi(data_ptr);
 		/// ------------------------------------------------------------------
 		sceneData.push_back(tmpData);
-		data_ptr = strtok(NULL,",");
-	}
+	}while((data_ptr = strtok(NULL,","))==NULL);
 	return 0;
 }
 

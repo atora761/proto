@@ -16,7 +16,7 @@
 #include "./workspace/include/CarData/CarData.h"
 #include "./workspace/include/Scene/SceneControl.h"
 #include "../../include/CarData/CarData.h"
-
+#include "../../include/SceneInfo/SceneInfo.hpp"
 #include "../../include/Sonic/UltraSonic.h"
 #include "../../include/ColorSpace/ColorSpace.h"
 
@@ -47,6 +47,14 @@ void start_task(intptr_t unused)
     ev3_sensor_config(EV3_PORT_1, TOUCH_SENSOR);
     /* 動的に生成するインスタンスの初期化 */
     user_system_create();
+    //ファイル読み込み
+    SceneInfo& sceneInfo    = SceneInfo::getInstance();
+	sceneInfo.init();
+    ColorSpace &colorspace = ColorSpace::getInstance();
+    colorspace.update();
+	UltraSonic &ultrasonic = UltraSonic::getInstance();
+    ultrasonic.update();
+  
     //フライング
     while (1)
     {
@@ -56,10 +64,7 @@ void start_task(intptr_t unused)
         }
         tslp_tsk(10 * 1000U);
     }
-    ColorSpace &colorspace = ColorSpace::getInstance();
-    colorspace.update();
-	UltraSonic &ultrasonic = UltraSonic::getInstance();
-    ultrasonic.update();
+    printf("button_on\n");
     act_tsk(MAIN_TASK);
     ext_tsk();
 }

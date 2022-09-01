@@ -21,10 +21,7 @@ int8_t SceneControl::init(){
     now_scenario = 0;
     scene_num = 10;
     now_scene = 1;
-
-    //ファイル読み込み
     SceneInfo& sceneInfo    = SceneInfo::getInstance();
-	sceneInfo.init();
     //タイムアタックのシーン数取得
     scene_num = sceneInfo.get(TIMEATTACK,common);
     printf("タイムアタックシーン数%d\n",scene_num);
