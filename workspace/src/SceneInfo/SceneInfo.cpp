@@ -11,6 +11,44 @@ char SceneInfo::init(){
 	// リサイズ使うとコンパイルできやんねんけど
 	// ここで考えるのをやめた
 	//  実機用（EV3）  /ev3rt/res/timeAttack.csv
+	#ifdef EV3
+	FileIO file;
+	vector<char> tabuf(file.getSize("/ev3rt/res/timeAttack.csv"));
+	file.read(tabuf,"/ev3rt/res/timeAttack.csv");
+	decode(tabuf,timeAttackData);
+	tabuf.shrink_to_fit();
+
+	vector<char> s0buf(file.getSize("/ev3rt/res/slalom.csv"));
+	file.read(s0buf,"/ev3rt/res/slalom.csv");
+	decode(s0buf,slalomData[common]);
+	s0buf.shrink_to_fit();
+
+	vector<char> s1buf(file.getSize("/ev3rt/res/slalom1.csv"));
+	file.read(s1buf,"/ev3rt/res/slalom1.csv");
+	decode(s1buf,slalomData[pattern1]);
+	s1buf.shrink_to_fit();
+
+	vector<char> s2buf(file.getSize("/ev3rt/res/slalom2.csv"));
+	file.read(s2buf,"/ev3rt/res/slalom2.csv");
+	decode(s2buf,slalomData[pattern2]);
+	s2buf.shrink_to_fit();
+
+	vector<char> g0buf(file.getSize("/ev3rt/res/garage.csv"));
+	file.read(g0buf,"/ev3rt/res/garage.csv");
+	decode(g0buf,garageData[common]);
+	g0buf.shrink_to_fit();
+
+	vector<char> g1buf(file.getSize("/ev3rt/res/garage1.csv"));
+	file.read(g1buf,"/ev3rt/res/garage1.csv");
+	decode(g1buf,garageData[pattern1]);
+	g1buf.shrink_to_fit();
+
+	vector<char> g2buf(file.getSize("/ev3rt/res/garage2.csv"));
+	file.read(g2buf,"/ev3rt/res/garage2.csv");
+	decode(g2buf,garageData[pattern2]);
+	g2buf.shrink_to_fit();
+	#else
+
 	FileIO file;
 	vector<char> tabuf(file.getSize("timeAttack.csv"));
 	file.read(tabuf,"timeAttack.csv");
@@ -46,8 +84,7 @@ char SceneInfo::init(){
 	file.read(g2buf,"garage2.csv");
 	decode(g2buf,garageData[pattern2]);
 	g2buf.shrink_to_fit();
-
-
+	#endif
 	return 0;
 }
 
