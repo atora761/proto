@@ -9,7 +9,7 @@
  **/
 #include "ev3api.h"
 #include "app.h"
-#if defined(MAKE_SIM)
+#ifdef MAKE_SIM
 #include "etroboc_ext.h"
 #endif
 #include "./workspace/include/Action/LineTrace.h"
@@ -105,7 +105,7 @@ void main_task(intptr_t unused)
    	stp_cyc(SONIC_PERIOD);
     stp_cyc(COLOR_PERIOD);
     stp_cyc(CARDATA_PERIOD);
-#if defined(MAKE_SIM)
+#ifdef MAKE_SIM
 	ETRoboc_notifyCompletedToSimulator();
 #endif
     ext_tsk();
