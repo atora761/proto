@@ -1,4 +1,5 @@
 #include "../../include/SceneInfo/SceneInfo.hpp"
+//#define EV3
 
 char SceneInfo::init(){
 	// timeAttack.csv
@@ -11,8 +12,9 @@ char SceneInfo::init(){
 	// リサイズ使うとコンパイルできやんねんけど
 	// ここで考えるのをやめた
 	//  実機用（EV3）  /ev3rt/res/timeAttack.csv
-	#ifdef EV3
 	FileIO file;
+	#ifdef EV3
+	printf("EV3 in\n");
 	vector<char> tabuf(file.getSize("/ev3rt/res/timeAttack.csv"));
 	file.read(tabuf,"/ev3rt/res/timeAttack.csv");
 	decode(tabuf,timeAttackData);
@@ -49,7 +51,7 @@ char SceneInfo::init(){
 	g2buf.shrink_to_fit();
 	#else
 
-	FileIO file;
+	
 	vector<char> tabuf(file.getSize("timeAttack.csv"));
 	file.read(tabuf,"timeAttack.csv");
 	decode(tabuf,timeAttackData);
@@ -92,240 +94,254 @@ char SceneInfo::init(){
 char SceneInfo::decode(vector<char>& fileData,vector<SceneData>& sceneData){
 	int cnt=0;
 	char* data_ptr = NULL;
+	char *save_ptr1 ;
 	SceneData tmpData;
-	data_ptr = strtok(fileData.data(),",");
+	printf("strtok\n");
+	data_ptr = strtok_r(fileData.data(),",",&save_ptr1);
 	do{
+		printf("loop_stt\n");
 		// シーン番号
 		tmpData.num=atoi(data_ptr);
 		/// 動作構造体代入-----------------------------------------------------
 		// 使用動作
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.moveData.motion=atoi(data_ptr);
 		// ライン位置
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.moveData.edge=atoi(data_ptr);
 		
 		// PIDゲイン
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.moveData.gain.p=atof(data_ptr);
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.moveData.gain.i=atof(data_ptr);
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.moveData.gain.d=atof(data_ptr);
 
 		// 閾値
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.moveData.target_val=atof(data_ptr);
 
 		// 目標速度
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.moveData.speed=atoi(data_ptr);
 
 		// カーブ半径
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.moveData.radius=atof(data_ptr);
 
 		// 目標座標
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.moveData.coordinate.x=atof(data_ptr);
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.moveData.coordinate.y=atof(data_ptr);
 
 		// 旋回方向
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.moveData.direction=atoi(data_ptr);
 
 		// アーム位置
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.moveData.arm_angle=atoi(data_ptr);
 
 		// アーム速度
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.moveData.arm_pwm=atoi(data_ptr);
 		/// ------------------------------------------------------------------
 
 		/// 判定構造体代入-----------------------------------------------------
 		// 使用判定1
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.decision[0]=atoi(data_ptr);
 
 		// 使用判定2
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.decision[1]=atoi(data_ptr);
 
 		// 座標範囲
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.coordinate_range[0]=atoi(data_ptr);
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.coordinate_range[1]=atoi(data_ptr);
 
 		// 目標座標
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.coordinate.x=atoi(data_ptr);
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.coordinate.y=atoi(data_ptr);
 
 		// 距離範囲
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.distance_range=atoi(data_ptr);
 
 		// 目標距離
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.distance=atoi(data_ptr);
 
 		// 目標色
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.color=atoi(data_ptr);
 
 		// RGB範囲
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.rgb_range[0]=atoi(data_ptr);//R
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.rgb_range[1]=atoi(data_ptr);//G
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.rgb_range[2]=atoi(data_ptr);//B
 
 		// 目標RGB
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.rgb.r=atoi(data_ptr);//R
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.rgb.g=atoi(data_ptr);//G
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.rgb.b=atoi(data_ptr);//B
 		// HSV範囲
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.hsv_range[0]=atoi(data_ptr);//H
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.hsv_range[1]=atoi(data_ptr);//S
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.hsv_range[2]=atoi(data_ptr);//V
 
 		// 目標HSV
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.hsv.h=atoi(data_ptr);//H
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.hsv.s=atoi(data_ptr);//S
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.hsv.v=atoi(data_ptr);//V
 
 		// 角度範囲
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.angle_range=atoi(data_ptr);
 
 		// 角度
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.angle=atof(data_ptr);
 
 		// 論理演算方法
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.logic=atoi(data_ptr);
 		/// ------------------------------------------------------------------
 
 		/// 判定構造体代入-----------------------------------------------------
 		// 使用補正
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.correction[0]=atoi(data_ptr);
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.correction[1]=atoi(data_ptr);
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.correction[2]=atoi(data_ptr);
 
 		// 補正座標
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.coordinate.x=atof(data_ptr);
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.coordinate.y=atof(data_ptr);
 
 		// 補正角度
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.angle=atof(data_ptr);
 
 		/// 補正用判定
 		// 使用判定1
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.decision[0]=atoi(data_ptr);
 
 		// 使用判定2
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.decision[1]=atoi(data_ptr);
 
 		// 座標範囲
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.coordinate_range[0]=atoi(data_ptr);
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.coordinate_range[1]=atoi(data_ptr);
 
 		// 目標座標
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.coordinate.x=atoi(data_ptr);
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.coordinate.y=atoi(data_ptr);
 
 		// 距離範囲
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.distance_range=atoi(data_ptr);
 
 		// 目標距離
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.distance=atoi(data_ptr);
 
 		// 目標色
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.color=atoi(data_ptr);
 
 		// RGB範囲
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.rgb_range[0]=atoi(data_ptr);//R
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.rgb_range[1]=atoi(data_ptr);//G
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.rgb_range[2]=atoi(data_ptr);//B
 
 		// 目標RGB
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.rgb.r=atoi(data_ptr);//R
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.rgb.g=atoi(data_ptr);//G
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.rgb.b=atoi(data_ptr);//B
 		// HSV範囲
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.hsv_range[0]=atoi(data_ptr);//H
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.hsv_range[1]=atoi(data_ptr);//S
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.hsv_range[2]=atoi(data_ptr);//V
 
 		// 目標HSV
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.hsv.h=atoi(data_ptr);//H
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.hsv.s=atoi(data_ptr);//S
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.hsv.v=atoi(data_ptr);//V
 
 		// 角度範囲
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.angle_range=atoi(data_ptr);
 
 		// 角度範囲
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.angle=atof(data_ptr);
 		// 論理演算方法
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.logic=atoi(data_ptr);
 		// スラロームパターンフラグ
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.paterndecisiondata.slalom_decision=atoi(data_ptr);
 		// ガレージパターンフラグ
-		data_ptr = strtok(NULL,",");
+		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.paterndecisiondata.garage_decision=atoi(data_ptr);
 		// ガレージ格納ポイント
-		data_ptr = strtok(NULL,"\n");
+		data_ptr = strtok_r(NULL,"\n",&save_ptr1);
 		tmpData.paterndecisiondata.garage_point=atoi(data_ptr);
 		/// ------------------------------------------------------------------
 		sceneData.push_back(tmpData);
-	}while((data_ptr = strtok(NULL,","))!=NULL);
+		try
+		{
+			data_ptr = strtok_r(NULL,",",&save_ptr1);
+			printf("try\n");
+		}catch(...){
+			printf("catch\n");
+			break;
+		}
+	}while(data_ptr!=NULL);
+
+	free(data_ptr);
+	free(save_ptr1);
 	return 0;
 }
 

@@ -41,13 +41,14 @@ static void user_system_destroy()
 /*  スタート処理タスク */
 void start_task(intptr_t unused)
 {
-    char command[] = {"logon -section -trace \n"};
+    //char command[] = {"logon -section -trace \n"};
     
     uint16 index = 0;
     ev3_sensor_config(EV3_PORT_1, TOUCH_SENSOR);
     /* 動的に生成するインスタンスの初期化 */
     user_system_create();
     //ファイル読み込み
+	tslp_tsk(10 * 1000U);
     SceneInfo& sceneInfo    = SceneInfo::getInstance();
 	sceneInfo.init();
     ColorSpace &colorspace = ColorSpace::getInstance();
