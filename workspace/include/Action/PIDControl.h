@@ -1,8 +1,8 @@
 #pragma once
 #define DELTA_TIME 0.01f
 #include <cstdint>
-#include <cstring>
-#include <memory>
+//#include <cstring>
+//#include <memory>
 #include <string>
 #include "ev3api.h"
 #include "../system/system.h"

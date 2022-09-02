@@ -4,10 +4,10 @@
 /* -------------------------------------------------------------------------- */
 #include <stdio.h>
 #include <stdlib.h>
-#include <cstring>
+//#include <cstring>
 #include <cstdint>
-#include <cstring>
-#include <memory>
+//#include <cstring>
+//#include <memory>
 #include "ev3api.h"
 #include "../../include/ColorSpace/ColorSensor.h"
 #include "../../include/system/system.h"

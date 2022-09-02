@@ -9,8 +9,8 @@ enum GarageColor
 };
 
 #include <cstdint>
-#include <cstring>
-#include <memory>
+//#include <cstring>
+//#include <memory>
 #include <string>
 #include "ev3api.h"
 
