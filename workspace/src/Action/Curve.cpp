@@ -60,8 +60,6 @@ int8_t Curve::run(int32_t speed){
 
     //printf("%f,%f\n",current_coordinate.x,current_coordinate.y);
 
-    my_printf("%f,%f\n",current_coordinate.x,current_coordinate.y);
-
     // 角度と辺の長さから扇形の円周を求める
     // 円周　＝　2πr * (角度 / 360)
     circle = (2 * PI * radius * angle) / 360;

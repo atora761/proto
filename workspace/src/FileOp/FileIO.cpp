@@ -59,7 +59,7 @@ int FileIO::getSize(char* file_path){
 int FileIO::log_open(void){
 
 	#ifndef EV3
-	if (( fp_Log = fopen ( "mLog.txt","w" )) == NULL ){
+	if (( fp_Log = fopen ( "mLog.txt","a" )) == NULL ){
 		printf("file open err\n");
 		return -1;
 	}
