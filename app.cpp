@@ -55,6 +55,8 @@ void start_task(intptr_t unused)
     colorspace.update();
 	UltraSonic &ultrasonic = UltraSonic::getInstance();
     ultrasonic.update();
+    CarData &cardata = CarData::getInstance();
+    cardata.update();
   
     //フライング
     while (1)
@@ -76,6 +78,7 @@ void main_task(intptr_t unused)
 	CarData&            car_data    = CarData::getInstance();
     SceneControl &scenecontrol = SceneControl::getInstance();
     int8 retChk = SYS_NG;
+
     sta_cyc(SONIC_PERIOD);
     sta_cyc(COLOR_PERIOD);
     sta_cyc(CARDATA_PERIOD);
