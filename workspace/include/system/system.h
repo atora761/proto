@@ -1,9 +1,9 @@
 #pragma once
 
-#include <cstdint>
+//#include <cstdint>
 //#include <cstring>
 ////#include <memory>
-#include <string>
+//#include <string>
 #include <math.h>
 #include "ev3api.h"
 
@@ -23,35 +23,32 @@
 #define CAR_WIDTH (134.22f)
 #define CAR_WHEEL_WIDTH (90.33f)
 
+
+extern "C" {
+// プロトタイプ宣言
+void* MyMemset( void* src, char num, size_t size );
+void *my_memcpy(void *buf1, const void *buf2, size_t n);
+}
 // integer 8bit
-using int8 = int8_t;
+using int8 = char;
 
 // integer 16bit
-using int16 = int16_t;
+using int16 = short;
 
 // integer 32bit
-using int32 = int32_t;
+using int32 = int;
 
-// integer 64bit
-using int64 = int64_t;
+
 
 // unsigned integer 8bit
-using uint8 = uint8_t;
+using uint8 = unsigned char;
 
 // unsigned integer 16bit
-using uint16 = uint16_t;
+using uint16 = unsigned short;
 
 // unsigned integer 32bit
-using uint32 = uint32_t;
+using uint32 = unsigned int;
 
-// unsigned integer 64bit
-using uint64 = uint64_t;
-
-// int pointer
-using intptr = intptr_t;
-
-// uint pointer
-using uintptr = uintptr_t;
 
 /* 列挙型の定義 */
 enum SensorPort
@@ -91,13 +88,13 @@ typedef struct HSV_TAG {
 }HSV_DATA;
 
 typedef struct MOTOR_POWER_TAG {
-	int32_t right;
-	int32_t left;
+	int32 right;
+	int32 left;
 }MOTOR_POWER;
 
 typedef struct MOTOR_ANGLE_TAG {
-	int32_t right;
-	int32_t left;
+	int32 right;
+	int32 left;
 }MOTOR_ANGLE;
 
 enum Motion{

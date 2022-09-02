@@ -38,11 +38,11 @@ UltraSonicSensor::~UltraSonicSensor(void)
 /* 機能名	: センサのport設定の初期化										 */
 /* 機能概要	: センサの初期化(ポート設定)を行う								 */
 /* 引数		: なし															 */
-/* 戻り値	: int8_t				:SYS_OK			:正常終了				 */
-/*			: int8_t				:SYS_NG			:異常終了				 */
+/* 戻り値	: int8				:SYS_OK			:正常終了				 */
+/*			: int8				:SYS_NG			:異常終了				 */
 /* 作成日	: 2022/07/14		筈尾  辰也		新規作成					 */
 /* ------------------------------------------------------------------------- */
-int8_t UltraSonicSensor::init( void ){
+int8 UltraSonicSensor::init( void ){
 
 	
 	ER errorCheck = NULL;						/* エラーチェック変数		 */
@@ -63,12 +63,12 @@ int8_t UltraSonicSensor::init( void ){
 /* 機能名	: 障害物との距離をCM単位で取得する								 */
 /* 機能概要	: APIを呼び出して距離情報を取得									 */
 /* 引数		: なし															 */
-/* 戻り値	: int16_t			:distance			:距離(cm単位)			 */
+/* 戻り値	: int16			:distance			:距離(cm単位)			 */
 /* 作成日	: 2022/07/14		筈尾  辰也		新規作成					 */
 /* ------------------------------------------------------------------------- */
-uint16_t UltraSonicSensor::getDistance( void ) {
+uint16 UltraSonicSensor::getDistance( void ) {
 
-	int16_t distance;							/* 距離変数					 */
+	int16 distance;							/* 距離変数					 */
 
 	/* 距離の取得 */
 	distance = ev3_ultrasonic_sensor_get_distance(EV3_PORT_3);

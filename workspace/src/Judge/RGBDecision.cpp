@@ -7,22 +7,22 @@ RGBDecision::RGBDecision() {
 
 	m_rgb = { 0,0,0 };
 
-	memset( m_range, 0, sizeof( m_range ) );
+	//MyMemset( m_range, 0, sizeof( m_range ) );
 
 	return;
 }
 
-RGBDecision::RGBDecision( RGB_DATA rgb, uint8_t range[ USAGE_LIMIT ] ) {
+RGBDecision::RGBDecision( RGB_DATA rgb, uint8 range[ USAGE_LIMIT ] ) {
 
 	m_rgb = rgb;
 
-	memcpy( m_range, range, sizeof( m_range ) );
+	my_memcpy( m_range, range, sizeof( m_range ) );
 
 	return;
 }
 
 //RGB判定メソッド
-int8_t RGBDecision::decide(void) {
+int8 RGBDecision::decide(void) {
 
 	if ( m_rgb.r > R_LIMIT ) {
 
@@ -37,10 +37,10 @@ int8_t RGBDecision::decide(void) {
 		return SYS_PARAM;
 	}
 
-	int8_t check_cnt = 0;//確認回数
-	int8_t unused_cnt = 0;//未使用チェック
+	int8 check_cnt = 0;//確認回数
+	int8 unused_cnt = 0;//未使用チェック
 
-	for ( check_cnt = 0; check_cnt < ( sizeof( m_range ) / sizeof( int8_t ) ); check_cnt++ ) {
+	for ( check_cnt = 0; check_cnt < ( sizeof( m_range ) / sizeof( int8 ) ); check_cnt++ ) {
 
 		if ( m_range[ check_cnt ] > RANGE_LIMIT ) {
 
@@ -62,8 +62,8 @@ int8_t RGBDecision::decide(void) {
 	ColorSpace &colorspace = ColorSpace::getInstance();
 
 	RGB_DATA current_rgb = { 0,0,0 };//現在RGB
-	int8_t success = 0;//成功回数
-	int8_t usage = USAGE_LIMIT;//判定実行回数
+	int8 success = 0;//成功回数
+	int8 usage = USAGE_LIMIT;//判定実行回数
 
 	//RGB取得
 	current_rgb = colorspace.getRGB();

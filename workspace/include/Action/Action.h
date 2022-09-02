@@ -12,6 +12,6 @@ class Action {
 		Action();
 		~Action() ;
 
-        virtual int8_t run(int32_t speed) =0;
+        virtual int8 run(int32 speed) =0;
 
 };

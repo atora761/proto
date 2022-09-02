@@ -17,6 +17,7 @@
 #include "./workspace/include/Action/Straight.h"
 #include "./workspace/include/CarData/CarData.h"
 #include "./workspace/include/Scene/SceneControl.h"
+#include "./workspace/include/Sonic/UltraSonic.h"
 
 
 /*

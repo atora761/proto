@@ -13,7 +13,7 @@
 /* ------------------------------------------------------------------------- */
 /* Include File																 */
 /* ------------------------------------------------------------------------- */
-                             /* system.hが不明            */
+#include "../system/system.h"                             /* system.hが不明            */
 
 /* ------------------------------------------------------------------------- */
 /* Define宣言																 */
@@ -34,8 +34,8 @@ public:
 
     UltraSonicSensor();                         /* コンストラクタ            */
     ~UltraSonicSensor();                        /* デストラクタ              */
-    uint16_t getDistance();                     /* 距離の取得                */
-    int8_t  init();                             /* 初期設定                  */
+    uint16 getDistance();                     /* 距離の取得                */
+    int8  init();                             /* 初期設定                  */
 
     static UltraSonicSensor& getInstance()
     {

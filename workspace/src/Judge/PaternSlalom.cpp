@@ -6,8 +6,8 @@ PaternSlalom::PaternSlalom(){
 
 PaternSlalom::~PaternSlalom(){}
 
-int8_t PaternSlalom::decide(){
-    int8_t slalomstate=0;
+int8 PaternSlalom::decide(){
+    int8 slalomstate=0;
     UltraSonic ultrasonic = UltraSonic::getInstance();
     distance=ultrasonic.getDistance();
     //距離によってパターン１，２を判定する

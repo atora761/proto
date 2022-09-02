@@ -4,5 +4,5 @@ class UseJudgement
 {
 public:
 	
-	virtual int8_t decide() = 0;
+	virtual int8 decide() = 0;
 };

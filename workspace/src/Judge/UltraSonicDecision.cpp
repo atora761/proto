@@ -11,7 +11,7 @@ UltraSonicDecision::UltraSonicDecision() {
 	return;
 }
 
-UltraSonicDecision::UltraSonicDecision( int16_t target_distance, int8_t range ) {
+UltraSonicDecision::UltraSonicDecision( int16 target_distance, int8 range ) {
 
 	m_target_distance = target_distance;
 	m_range = range;
@@ -20,7 +20,7 @@ UltraSonicDecision::UltraSonicDecision( int16_t target_distance, int8_t range ) 
 }
 
 //超音波判定メソッド
-int8_t UltraSonicDecision::decide() {
+int8 UltraSonicDecision::decide() {
 
 	//メンバ変数チェック
 	if ( m_range > RANGE_LIMIT ) {
@@ -31,7 +31,7 @@ int8_t UltraSonicDecision::decide() {
 	//超音波のインスタンスを取得
 	UltraSonic &ultrasonic = UltraSonic::getInstance();
 
-	int16_t current_distance = 0;//現在距離
+	int16 current_distance = 0;//現在距離
 
 	//現在距離取得
 	current_distance = ultrasonic.getDistance();

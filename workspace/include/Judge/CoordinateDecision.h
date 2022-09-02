@@ -10,14 +10,14 @@ class CoordinateDecision : public UseJudgement{
 public:
 
 	CoordinateDecision();
-	CoordinateDecision( COORDINATE coordinate, uint8_t range[ USAGE_LIMIT ] );
+	CoordinateDecision( COORDINATE coordinate, uint8 range[ USAGE_LIMIT ] );
 
-	int8_t decide();//判定メソッド
+	int8 decide();//判定メソッド
 
 private:
 
 	COORDINATE m_coordinate;//目標座標
-	uint8_t m_range[ USAGE_LIMIT ];//使用範囲
+	uint8 m_range[ USAGE_LIMIT ];//使用範囲
 };
 
 #endif

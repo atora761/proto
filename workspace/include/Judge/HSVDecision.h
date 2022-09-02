@@ -16,14 +16,14 @@ class HSVDecision : public UseJudgement {
 public:
 
 	HSVDecision();
-	HSVDecision( HSV_DATA hsv, uint8_t range[ USAGE_LIMIT ] );
+	HSVDecision( HSV_DATA hsv, uint8 range[ USAGE_LIMIT ] );
 
-	int8_t decide();//判定メソッド
+	int8 decide();//判定メソッド
 
 private:
 
 	HSV_DATA m_hsv;//目標HSV
-	uint8_t m_range[ USAGE_LIMIT ];//使用範囲
+	uint8 m_range[ USAGE_LIMIT ];//使用範囲
 };
 
 #endif

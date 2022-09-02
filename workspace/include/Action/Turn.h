@@ -1,7 +1,7 @@
-#include <cstdint>
+//#include <cstdint>
 //#include <cstring>
 //#include <memory>
-#include <string>
+//#include <string>
 #include "ev3api.h"
 
 #include "./Action.h"
@@ -14,6 +14,6 @@ public:
 	Turn(unsigned char );
 	~Turn();
 
-	int8_t run(int32_t speed);
+	int8 run(int32 speed);
 
 };

@@ -5,7 +5,7 @@ Turn::Turn(unsigned char _angle) {
 }
 Turn::~Turn() {}
 
-int8_t Turn::run(int32_t speed)
+int8 Turn::run(int32 speed)
 {
 
 	int8 retChk = SYS_NG;
@@ -14,7 +14,7 @@ int8_t Turn::run(int32_t speed)
 	CarData&		 carPosiiton = CarData::getInstance();
 	Steering         &steering = Steering::getInstance();
 
-	memset(&motor_power, 0, sizeof(motor_power));
+	MyMemset(&motor_power, 0, sizeof(motor_power));
 
 	// 現在の車体角度取得
 	nowAngle = carPosiiton.getAngle();

@@ -25,14 +25,14 @@
 class Curve : public Action{
 private:
     float           radius;                 // 半径
-    int8_t          direction;              // カーブ方向
+    int8          direction;              // カーブ方向
 	COORDINATE      target_coordinate;      // 目標座標
 
 public:
 
     Curve();
-    Curve(float _radius, int8_t _direction,COORDINATE _coordenate);
+    Curve(float _radius, int8 _direction,COORDINATE _coordenate);
     ~Curve();
 
-    int8_t run(int32_t speed);
+    int8 run(int32 speed);
 };

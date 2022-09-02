@@ -8,7 +8,7 @@
 Curve::Curve(){};
 
 /// コンストラクタ引数あり
-Curve::Curve(float _radius, int8_t _direction,COORDINATE _coordinate){
+Curve::Curve(float _radius, int8 _direction,COORDINATE _coordinate){
     target_coordinate   = _coordinate;
 	direction           = _direction;
 	radius 				= _radius; 
@@ -16,7 +16,7 @@ Curve::Curve(float _radius, int8_t _direction,COORDINATE _coordinate){
 
 Curve::~Curve(){};
 
-int8_t Curve::run(int32_t speed){
+int8 Curve::run(int32 speed){
     if( speed < -100 || speed > 100 ) {
         return SYS_PARAM;
     }
@@ -35,6 +35,7 @@ int8_t Curve::run(int32_t speed){
     float           area;                   // 面積
 	float           average;                // 平均
 	float           height;                 // 高さ
+	float			_radius;
 
     // 変数初期化
     target_distance     = 0.0f;

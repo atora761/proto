@@ -2,10 +2,10 @@
 #define SLALOMPATERNA 1
 #define SLALOMPATERNB 2
 
-#include <cstdint>
+//#include <cstdint>
 //#include <cstring>
 //#include <memory>
-#include <string>
+//#include <string>
 #include "ev3api.h"
 
 #include "../../include/Judge/UseJudgement.h"
@@ -18,6 +18,6 @@ public:
 
     ~PaternSlalom();
 
-    int8_t decide(); 
+    int8 decide(); 
 };
 

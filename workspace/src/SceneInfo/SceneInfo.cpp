@@ -1,4 +1,5 @@
 #include "../../include/SceneInfo/SceneInfo.hpp"
+#include <string.h>
 
 char SceneInfo::init(){
 	// timeAttack.csv

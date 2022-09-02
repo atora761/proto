@@ -37,9 +37,9 @@ int8 CarData::update( void )
 	MOTOR_ANGLE nowAngle;
 	WheelDist wheelDist;
 
-	memset( &preAngle, 0, sizeof( MOTOR_ANGLE ) );
-	memset( &nowAngle, 0, sizeof( MOTOR_ANGLE ) );
-	memset( &wheelDist, 0, sizeof( WheelDist ) );
+	//MyMemset( &preAngle, 0, sizeof( MOTOR_ANGLE ) );
+	//MyMemset( &nowAngle, 0, sizeof( MOTOR_ANGLE ) );
+	//MyMemset( &wheelDist, 0, sizeof( WheelDist ) );
 
 	preAngle = steering.getMotorAngle( );
 	
@@ -88,7 +88,7 @@ int8 CarData::calcOdometry( WheelDist* wheel_dist )
 	double addRad = 0.0f;
 	COORDINATE addPos;
 
-	memset( &addPos, 0, sizeof( COORDINATE ) );
+	//MyMemset( &addPos, 0, sizeof( COORDINATE ) );
 
 	dist = (double)(wheel_dist->right + wheel_dist->left) / 2.0f;
 	angle = (float)(360.0f / (2.0f * PI * CAR_WIDTH)) * (wheel_dist->left - wheel_dist->right);

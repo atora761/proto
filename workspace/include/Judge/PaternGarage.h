@@ -8,10 +8,10 @@ enum GarageColor
   BLUETHRESHOLD ,
 };
 
-#include <cstdint>
+//#include <cstdint>
 //#include <cstring>
 //#include <memory>
-#include <string>
+//#include <string>
 #include "ev3api.h"
 
 class PaternGarage : public UseJudgement {
@@ -23,6 +23,6 @@ public:
 
     ~PaternGarage();
 
-    int8_t decide(); 
+    int8 decide(); 
 
 };

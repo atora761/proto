@@ -6,7 +6,7 @@ PIDControl::PIDControl(){}
 PIDControl::~PIDControl(){}
 
 int8 PIDControl::init(GAIN _gain){
-    memcpy(&gain,&_gain,sizeof(GAIN));
+	gain = _gain;
     stack_integral=0.0f;
     motor_revision = 0.0f;
     prevdeviation=0.0f;

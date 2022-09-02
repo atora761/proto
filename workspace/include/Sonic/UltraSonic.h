@@ -31,21 +31,21 @@
 /* ------------------------------------------------------------------------- */
 class UltraSonic {
 private:
-    int16_t prevDisCM;                          /* 前回の距離(CM)            */
-    int16_t critDisCM;                          /* 基準となるCM              */
+    int16 prevDisCM;                          /* 前回の距離(CM)            */
+    int16 critDisCM;                          /* 基準となるCM              */
     MOTOR_ANGLE   prevMorter;                   /* 前回のモータのエンコーダ  */
     MOTOR_ANGLE   nowMorter;                    /* 最新のモータのエンコーダ  */
 
     UltraSonic();                               /* コンストラクタ            */
-    int8_t  calc();                             /* 平均化してmm単位で取得    */
+    int8  calc();                             /* 平均化してmm単位で取得    */
 
 public:
 
-    uint16_t distanceCM;                          /* 距離情報(CM)            　*/
+    uint16 distanceCM;                          /* 距離情報(CM)            　*/
     double distanceMM;
     ~UltraSonic();                              /* デストラクタ              */
-    int16_t getDistance();                      /* 距離の取得                */
-    int8_t  update();                           /* distance更新              */
+    int16 getDistance();                      /* 距離の取得                */
+    int8  update();                           /* distance更新              */
 
     static UltraSonic& getInstance()
     {

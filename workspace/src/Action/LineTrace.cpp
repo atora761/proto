@@ -3,14 +3,14 @@
 /// コンストラクタ引数なし
 LineTrace::LineTrace()
 {
-	memset(&gain,0,sizeof(GAIN));
+	//MyMemset(&gain,0,sizeof(GAIN));
 	target_val = 0;
 	edge = 0;
 }
 
 /// コンストラクタ引数あり
 /// メンバー変数に格納
-LineTrace::LineTrace(GAIN _gain,float _target_val,int8_t _edge,COORDINATE _coordinate)
+LineTrace::LineTrace(GAIN _gain,float _target_val,int8 _edge,COORDINATE _coordinate)
 {
 	gain = _gain;
 	target_val = _target_val;
@@ -24,7 +24,7 @@ LineTrace::~LineTrace()
 
 }
 
-int8_t LineTrace::run(int32_t speed)
+int8 LineTrace::run(int32 speed)
 {
 	// 引数チェック
 	if ( speed < -100 || speed > 100 )

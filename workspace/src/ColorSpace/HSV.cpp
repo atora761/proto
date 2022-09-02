@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 //#include <cstring>
-#include <cstdint>
+//#include <cstdint>
 //#include <cstring>
 //#include <memory>
 #include "ev3api.h"
@@ -19,9 +19,9 @@ HSV::HSV(){}
 HSV::~HSV(){}
 
 HSV_DATA HSV::convert(RGB_DATA rgb){
-    int16_t red = 0;
-    int16_t green = 0;
-    int16_t bule = 0;
+    int16 red = 0;
+    int16 green = 0;
+    int16 bule = 0;
     red=rgb.r;
     green=rgb.g;
     bule =rgb.b;

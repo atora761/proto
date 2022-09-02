@@ -8,7 +8,7 @@
 #include "../../include/Judge/RGBDecision.h"
 #include "../../include/Judge/UltraSonicDecision.h"
 
-int8_t Judgement::judge( DecisionData decisiondata ) {
+int8 Judgement::judge( DecisionData decisiondata ) {
 
 	AngleDecision angledecision( decisiondata.angle, decisiondata.angle_range );
 
@@ -18,10 +18,10 @@ int8_t Judgement::judge( DecisionData decisiondata ) {
 	UltraSonicDecision ultrasonicdecision( decisiondata.distance, decisiondata.distance_range );
 	UseJudgement *usejudgement[] = { &coordinatedecision ,&coordinatedecision ,&angledecision ,
 									 &rgbdecision ,&hsvdecision ,&ultrasonicdecision };
-	int8_t judge_cnt = 0;
-	int8_t result_check[ 2 ];
+	int8 judge_cnt = 0;
+	int8 result_check[ 2 ];
 
-	memset( result_check, 0, sizeof( result_check ) );
+	MyMemset( result_check, 0, sizeof( result_check ) );
 
 	//判定実行
 	for ( judge_cnt = 0; (judge_cnt < 2 )&& (decisiondata.decision[ judge_cnt ] != 0); judge_cnt++ ) {

@@ -1,10 +1,10 @@
 #pragma once
 #define slalom 0
 #define garage 1
-#include <cstdint>
+//#include <cstdint>
 //#include <cstring>
 //#include <memory>
-#include <string>
+//#include <string>
 #include "ev3api.h"
 
 #include "../../include/Judge/UseJudgement.h"

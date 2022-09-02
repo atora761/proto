@@ -13,8 +13,8 @@ Task::Task(MoveData movedata,CorrectionData correctiondata){
 }
 Task::~Task() {}
 
-int8_t Task::run(){
-    int8_t retChk = SYS_NG;
+int8 Task::run(){
+    int8 retChk = SYS_NG;
     //printf("動作番号:%d",moveData.motion);
     if(moveData.motion == 1){
         Action* action = new Straight(moveData.coordinate);
@@ -45,7 +45,7 @@ int8_t Task::run(){
     }*/
     //回避経路補正の値が設定されていれば行う
     /*if(avoidance == 1){
-        int8_t patern = 0;
+        int8 patern = 0;
         //スラロームのパターンを取得する
         PaternJudge &paternjudge = PaternJudge::getInstance();
         patern = paternjudge.getSlalom();

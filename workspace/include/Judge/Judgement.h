@@ -9,7 +9,7 @@ class Judgement {
 
 public:
 
-	int8_t judge( DecisionData decisiondata );
+	int8 judge( DecisionData decisiondata );
 
 };
 #endif

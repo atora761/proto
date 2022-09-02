@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 //#include <cstring>
-#include <cstdint>
+//#include <cstdint>
 //#include <cstring>
 //#include <memory>
 #include "../../include/system/system.h"

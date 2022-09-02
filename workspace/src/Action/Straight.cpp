@@ -13,7 +13,7 @@ Straight::Straight(COORDINATE _coordinate)
 	target_coordinate = _coordinate;
 }
 
-int8_t Straight::run(int32_t speed)
+int8 Straight::run(int32 speed)
 {
 	// 引数チェック
 	if ( speed < -100 || speed > 100 )

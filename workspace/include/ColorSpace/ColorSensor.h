@@ -9,7 +9,7 @@ private:
 		static ColorSensor* _singleton;
 
 public:
-	int8_t Init();
+	int8 Init();
 	static RGB_DATA getRGB();
 	static ColorSensor& getInstance()
     {

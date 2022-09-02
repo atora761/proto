@@ -31,7 +31,7 @@ TrapezoidControl::~TrapezoidControl() {
 */
 float TrapezoidControl::run(float deviation)
 {
-	int8_t ret = 0.0f;								/* 戻り値チェック変数		 */
+	int8 ret = 0.0f;								/* 戻り値チェック変数		 */
 
 	return (float)target;
 
@@ -70,7 +70,7 @@ float TrapezoidControl::run(float deviation)
 	* @return SYS_OK	正常終了
 	*		  SYS_NG	引数エラー
 */
-int8_t TrapezoidControl::setVelocity(float velocity)
+int8 TrapezoidControl::setVelocity(float velocity)
 {
 	/* 引数チェック */
 	if (velocity < VELOCITY_MIN || velocity > VELOCITY_MAX) {
@@ -89,7 +89,7 @@ int8_t TrapezoidControl::setVelocity(float velocity)
 	* @return SYS_OK	正常終了
 	*		  SYS_NG	異常終了
 */
-int8_t TrapezoidControl::calc(void)
+int8 TrapezoidControl::calc(void)
 {
 
 	v_target = (target / VELOCITY_MAX) * V_MAX_WHEEL;

@@ -16,7 +16,7 @@ SceneControl::SceneControl(){
 //デストラクタ
 SceneControl::~SceneControl(){}
 
-int8_t SceneControl::init(){
+int8 SceneControl::init(){
     
     now_scenario = 0;
     scene_num = 10;
@@ -31,7 +31,7 @@ int8_t SceneControl::init(){
     return SYS_OK;
 }
 
-int8_t SceneControl::run(){
+int8 SceneControl::run(){
     PaternJudge& paternjudge = PaternJudge::getInstance();
     SceneInfo& sceneInfo    = SceneInfo::getInstance();
     //シナリオ内全シーンが終了している場合
@@ -111,8 +111,8 @@ int8_t SceneControl::run(){
     return SYS_OK;
 }
 
-int8_t SceneControl::SceneSwitch(){
-    int8_t judge_bool = 0;
+int8 SceneControl::SceneSwitch(){
+    int8 judge_bool = 0;
     Judgement judgement;
     //シーン切り替え判定
     //printf("scene_change_judge\n");

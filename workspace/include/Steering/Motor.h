@@ -9,7 +9,7 @@ protected:
 public:
 	Motor( );
 	~Motor( );
-	int8_t setPWM( int8_t );
+	int8 setPWM( int8 );
 	float getCounts();
 	
 private:

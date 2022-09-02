@@ -1,8 +1,8 @@
 #pragma once
-#include <cstdint>
+//#include <cstdint>
 //#include <cstring>
 //#include <memory>
-#include <string>
+//#include <string>
 #include "ev3api.h"
 #include "../system/system.h"
 

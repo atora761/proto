@@ -1,19 +1,20 @@
 #pragma once
-#include <cstdint>
+//#include <cstdint>
 //#include <cstring>
 //#include <memory>
-#include <string>
+//#include <string>
 #include "ev3api.h"
+#include "../system/system.h"
 
 
 class SceneControl{
     private:
-    int8_t  error;       //エラー値
-    int16_t scene_num;   //シーン数
-    int16_t now_scene;   //現シーン番号
-    int8_t  now_scenario; //現在シナリオ
-    int8_t slalom_patern;
-    int8_t garage_card;
+    int8  error;       //エラー値
+    int16 scene_num;   //シーン数
+    int16 now_scene;   //現シーン番号
+    int8  now_scenario; //現在シナリオ
+    int8 slalom_patern;
+    int8 garage_card;
     SceneData sceneData;
     public:
     //コンストラクタ
@@ -22,16 +23,16 @@ class SceneControl{
     ~SceneControl();
     //init      初期化
     //引数      -
-    //戻り値    int8_t     エラー値
-    int8_t  init();
+    //戻り値    int8     エラー値
+    int8  init();
     //run       動作
     //引数      -
-    //戻り値    int8_t     エラー値
-    int8_t  run();
+    //戻り値    int8     エラー値
+    int8  run();
     //switch    シーン切り替え
     //引数      -
-    //戻り値    int8_t     エラー値
-    int8_t  SceneSwitch();
+    //戻り値    int8     エラー値
+    int8  SceneSwitch();
 
     static SceneControl &getInstance()
     {

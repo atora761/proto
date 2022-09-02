@@ -18,7 +18,7 @@ class Correction {
 
 public:
 
-	int8_t run( CorrectionData correctionData );
+	int8 run( CorrectionData correctionData );
 };
 
 #endif // !CORRECTION

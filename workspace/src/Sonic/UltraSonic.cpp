@@ -48,10 +48,10 @@ UltraSonic::~UltraSonic( void ){}
 /* 機能名	:																 */
 /* 機能概要	: メンバー変数のdistanceを取得する								 */
 /* 引数		: なし															 */
-/* 戻り値	: int16_t			:distanceMM			:距離(mm単位)			 */
+/* 戻り値	: int16			:distanceMM			:距離(mm単位)			 */
 /* 作成日	: 2022/07/14		筈尾  辰也		新規作成					 */
 /* ------------------------------------------------------------------------- */
-int16_t UltraSonic::getDistance( void ) 
+int16 UltraSonic::getDistance( void ) 
 {
 	/* 距離(mm単位)を返す */
 	return distanceMM;
@@ -62,11 +62,11 @@ int16_t UltraSonic::getDistance( void )
 /* 機能名	: 障害物との距離をCM単位で取得する								 */
 /* 機能概要	: 更新タスクで呼び出され、distance値の更新を行う				 */
 /* 引数		: なし															 */
-/* 戻り値	: int8_t				:SYS_OK			:正常終了				 */
-/*			: int8_t				:SYS_NG			:異常終了				 */
+/* 戻り値	: int8				:SYS_OK			:正常終了				 */
+/*			: int8				:SYS_NG			:異常終了				 */
 /* 作成日	: 2022/07/14		筈尾  辰也		新規作成					 */
 /* ------------------------------------------------------------------------- */
-int8_t UltraSonic::update( void ) {
+int8 UltraSonic::update( void ) {
 
 	/* 超音波センサクラスの作成 */
 	UltraSonicSensor USS = UltraSonicSensor::getInstance();
@@ -89,11 +89,11 @@ int8_t UltraSonic::update( void ) {
 /* 機能名	: 障害物との距離をMM単位で取得する								 */
 /* 機能概要	: 更新タスクで呼び出され、distance値の更新を行う				 */
 /* 引数		: なし															 */
-/* 戻り値	: int8_t				:SYS_OK			:正常終了				 */
-/*			: int8_t				:SYS_NG			:異常終了				 */
+/* 戻り値	: int8				:SYS_OK			:正常終了				 */
+/*			: int8				:SYS_NG			:異常終了				 */
 /* 作成日	: 2022/07/16		筈尾  辰也		新規作成					 */
 /* ------------------------------------------------------------------------- */
-int8_t UltraSonic::calc(void) {
+int8 UltraSonic::calc(void) {
 	int32 wheelDistR;
 	int32 wheelDistL;
 	double dist;

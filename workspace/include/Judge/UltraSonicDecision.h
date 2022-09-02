@@ -9,13 +9,13 @@ class UltraSonicDecision : public UseJudgement {
 public:
 
 	UltraSonicDecision();
-	UltraSonicDecision( int16_t target_distance, int8_t range );
+	UltraSonicDecision( int16 target_distance, int8 range );
 
-	int8_t decide();//判定メソッド
+	int8 decide();//判定メソッド
 
 private:
-	int16_t m_target_distance;//目標距離
-	uint8_t m_range;//使用範囲
+	int16 m_target_distance;//目標距離
+	uint8 m_range;//使用範囲
 
 };
 

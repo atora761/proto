@@ -10,7 +10,7 @@ Motor::~Motor( )
 {
 }
 
-int8_t Motor::setPWM(int8_t motorPower)
+int8 Motor::setPWM(int8 motorPower)
 {
 	if ( motorPower < -100 || motorPower > 100 )
 	{

@@ -5,7 +5,7 @@
 class HSV
 {
 public:
-	int8_t Init();
+	int8 Init();
     HSV_DATA  convert(RGB_DATA rgb);
     HSV();
 

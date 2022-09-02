@@ -14,7 +14,7 @@ AngleDecision::AngleDecision() {
 	return;
 }
 
-AngleDecision::AngleDecision( float target_angle, int8_t range ) {
+AngleDecision::AngleDecision( float target_angle, int8 range ) {
 
 	m_target_angle = target_angle;
 	m_range = range;
@@ -22,7 +22,7 @@ AngleDecision::AngleDecision( float target_angle, int8_t range ) {
 	return;
 }
 //角度判定メソッド
-int8_t AngleDecision::decide(void) {
+int8 AngleDecision::decide(void) {
 
 	//メンバ変数チェック
 	if ( m_range > RANGE_LIMIT ) {

@@ -16,14 +16,14 @@ class RGBDecision : public UseJudgement {
 public:
 
 	RGBDecision();
-	RGBDecision( RGB_DATA rgb, uint8_t range[ USAGE_LIMIT ] );
+	RGBDecision( RGB_DATA rgb, uint8 range[ USAGE_LIMIT ] );
 
-	int8_t decide();//判定メソッド
+	int8 decide();//判定メソッド
 
 private:
 
 	RGB_DATA m_rgb;//目標RGB
-	uint8_t m_range[ USAGE_LIMIT ];//使用範囲
+	uint8 m_range[ USAGE_LIMIT ];//使用範囲
 };
 
 #endif

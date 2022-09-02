@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 //#include <cstring>
-#include <cstdint>
+//#include <cstdint>
 //#include <cstring>
 //#include <memory>
 #include "ev3api.h"
@@ -13,8 +13,8 @@
 #include "../../include/system/system.h"
 ColorSensor::ColorSensor(){}
 ColorSensor::~ColorSensor(){}
-int8_t ColorSensor::Init(){
-	int8_t che = 0;
+int8 ColorSensor::Init(){
+	int8 che = 0;
 	ER errChk = ev3_sensor_config(static_cast<sensor_port_t>(SENSOR_COLOR), COLOR_SENSOR);
 	if (errChk != E_OK)
 	{
@@ -26,7 +26,7 @@ int8_t ColorSensor::Init(){
 RGB_DATA ColorSensor::getRGB(){
 	rgb_raw_t rgbTmp;
 	RGB_DATA rgb_Data;
-	memset(&rgbTmp,0,sizeof(rgb_raw_t));
+	MyMemset(&rgbTmp,0,sizeof(rgb_raw_t));
 	ev3_color_sensor_get_rgb_raw(static_cast<sensor_port_t>(SENSOR_COLOR), &rgbTmp);
 
 	rgb_Data.r = rgbTmp.r;

@@ -53,7 +53,7 @@ public:
 	TrapezoidControl&operator=( const TrapezoidControl & ) { return *this; };
 
 	float run(float input);
-	int8_t setVelocity(float velocity);
+	int8 setVelocity(float velocity);
 
 	static TrapezoidControl &getInstance()
 	{
@@ -74,7 +74,7 @@ private:
 	double v_target = 0;							/* 目標速度					 */
 	double v_start = 0;							/* 初速度					 */
 
-	int8_t calc(void);
+	int8 calc(void);
 
 	float conversion();
 };

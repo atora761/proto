@@ -23,5 +23,5 @@ class Straight : public Action{
 	Straight(COORDINATE target_coordinate);
 	~Straight();
 
-	int8_t run(int32_t speed);
+	int8 run(int32 speed);
 };

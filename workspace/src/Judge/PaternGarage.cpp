@@ -5,7 +5,7 @@ PaternGarage::PaternGarage(){}
 
 PaternGarage::~PaternGarage(){}
 
-int8_t PaternGarage::decide(){
+int8 PaternGarage::decide(){
     ColorSpace color = ColorSpace::getInstance();
     rgb=color.getRGB();
     //printf("r:%d,g:%d,b:%d\n",rgb.r,rgb.g,rgb.b);

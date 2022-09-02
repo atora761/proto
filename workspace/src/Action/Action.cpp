@@ -4,4 +4,4 @@
 Action::Action(){}
 Action::~Action(){}
 
-int8_t run(int32_t speed){} 
+int8 run(int32 speed){} 

@@ -6,12 +6,12 @@
 #include "../../include/Judge/Judgement.h"
 #include "../../include/CarData/CarData.h"
 
-int8_t Correction::run( CorrectionData correctiondata ) {
+int8 Correction::run( CorrectionData correctiondata ) {
 
-	int8_t check_cnt = 0;//確認回数
-	int8_t unused_cnt = 0;//未使用チェック
+	int8 check_cnt = 0;//確認回数
+	int8 unused_cnt = 0;//未使用チェック
 
-	for ( check_cnt = 0; check_cnt < ( sizeof( correctiondata.correction ) / sizeof( uint8_t ) ); check_cnt++ ) {
+	for ( check_cnt = 0; check_cnt < ( sizeof( correctiondata.correction ) / sizeof( uint8 ) ); check_cnt++ ) {
 
 		if ( correctiondata.correction[ check_cnt ] == 0 ) {
 
@@ -26,16 +26,16 @@ int8_t Correction::run( CorrectionData correctiondata ) {
 
 	Judgement judgement;
 
-	int8_t result_check = 0;//判定結果
+	int8 result_check = 0;//判定結果
 	COORDINATE coordinate = correctiondata.coordinate;//補正座標
 	float angle = correctiondata.angle;//補正角度
-	uint8_t pattern[ 3 ];//使用軸
+	uint8 pattern[ 3 ];//使用軸
 	float degree = 0;//機体角度(degree)
 	float radian = 0;//機体角度(radian)
 	float senser_pos = 0;//機体の中心座標からセンサまでの距離
 	
-	memset( pattern, 0, sizeof( pattern ) );
-	memcpy( pattern, correctiondata.correction, sizeof( pattern ) );
+	//MyMemset( pattern, 0, sizeof( pattern ) );
+	//my_memcpy( pattern, correctiondata.correction, sizeof( pattern ) );
 
 	//インスタンスを取得
 	CarData &cardata = CarData::getInstance();
