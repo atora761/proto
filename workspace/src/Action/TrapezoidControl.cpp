@@ -33,12 +33,12 @@ float TrapezoidControl::run(float deviation)
 {
 	int8_t ret = 0.0f;								/* 戻り値チェック変数		 */
 
-	return (float)target;
+	//return (float)target;
 
 	//printf("%f,%f,%f,",deviation,run_time,ad.t_end());
 
 	/* 走行距離が変化した時に真 */
-	if (run_time > ad.t_end() || time_fst == 0.0f) {
+	if (pre_deviation < deviation) {
 		time_fst = 1.0f;
 		distance = (double)deviation;
 		start = pre_target;
@@ -50,6 +50,9 @@ float TrapezoidControl::run(float deviation)
 			return SYS_NG;
 		}
 	}
+
+	//printf("%lf,%f,%f,",ad.x_end(),deviation,V_MAX_WHEEL);
+	//printf("\n%f\n",V_MAX_WHEEL);
 
 	/* 瞬間速度を代入 */
 	motor_revision = ad.v(run_time);
@@ -77,7 +80,8 @@ int8_t TrapezoidControl::setVelocity(float velocity)
 		return SYS_PARAM;
 	}
 
-	pre_target = target;
+	//pre_target = target;
+	pre_target = motor_revision;
 	target = velocity;
 
 	return SYS_OK;
@@ -96,7 +100,11 @@ int8_t TrapezoidControl::calc(void)
 	v_start = (start / VELOCITY_MAX) * V_MAX_WHEEL;
 
 	/* 曲線作成 */
-	ad.reset(JERK_MAX, ACCEL_MAX, V_MAX_WHEEL, v_start, v_target, distance, 0, 0);
+	if(start < target){
+		ad.reset(JERK_MAX, ACCEL_MAX, v_target, v_start, v_target, distance * 1.55, 0, 0);
+	}else{
+		ad.reset(JERK_MAX, ACCEL_MAX, v_start, v_start, v_target, distance * 1.7, 0, 0);
+	}
 
 	return SYS_OK;
 }

@@ -17,11 +17,11 @@
 
 using namespace std;
 
-//#define DEBUG_EV3
-#define DEBUG_SPIKE
+#define DEBUG_EV3
+//#define DEBUG_SPIKE
 
-#define JERK_MAX		(  100.0f)				/* �ő���x					 */
-#define ACCEL_MAX		(  200.0f)				/* �ő�����x				 */
+#define JERK_MAX		(  200.0f)				/* �ő���x					 */
+#define ACCEL_MAX		(  700.0f)				/* �ő�����x				 */
 #define VELOCITY_MAX	(  100.0f)				/* �ő呬�x					 */
 #define VELOCITY_MIN	(    0.0f)				/* �Œᑬ�x					 */
 #define EXECTION_COUNT	(   0.01f)				/* �o�ߎ���					 */
@@ -29,8 +29,9 @@ using namespace std;
 #define PI				(3.141592653589793f)	/* �~����					 */
 
 #ifdef DEBUG_EV3
-#define RPS				(   2.31f)				/* ���[�^�[�̉�]���x [r/s]	 */
-#define WHEEL_WIDTH		(	90.33f)				/* �ԗւ̒��a(mm)			 */
+//#define RPS				(   2.31f)				/* ���[�^�[�̉�]���x [r/s]	 */
+#define RPS				(   2.75f)
+#define WHEEL_WIDTH		(	CAR_WHEEL_WIDTH)				/* �ԗւ̒��a(mm)			 */
 #define V_MAX_WHEEL		(RPS * WHEEL_WIDTH * PI)	
 												/* �ő��]���x				 */
 #endif
