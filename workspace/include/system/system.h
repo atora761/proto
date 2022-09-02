@@ -1,8 +1,8 @@
 #pragma once
 
 #include <cstdint>
-#include <string.h>
-#include <memory>
+#include <cstring>
+//#include <memory>
 #include <string>
 #include <math.h>
 #include "ev3api.h"

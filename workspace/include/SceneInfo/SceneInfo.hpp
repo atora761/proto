@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include <string.h>
+#include <cstring>
 #include <stdlib.h>
 
 #include "../system/system.h"

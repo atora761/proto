@@ -17,10 +17,7 @@
 #include "./workspace/include/Action/Straight.h"
 #include "./workspace/include/CarData/CarData.h"
 #include "./workspace/include/Scene/SceneControl.h"
-#include "../../include/CarData/CarData.h"
 
-#include "../../include/Sonic/UltraSonic.h"
-#include "../../include/ColorSpace/ColorSpace.h"
 
 /*
 #if defined(MAKE_SIM)

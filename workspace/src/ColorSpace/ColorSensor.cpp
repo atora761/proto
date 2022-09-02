@@ -4,9 +4,9 @@
 /* -------------------------------------------------------------------------- */
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+#include <cstring>
 #include <cstdint>
-#include <string.h>
+#include <cstring>
 #include <memory>
 #include "ev3api.h"
 #include "../../include/ColorSpace/ColorSensor.h"

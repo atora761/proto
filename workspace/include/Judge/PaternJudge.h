@@ -2,7 +2,7 @@
 #define slalom 0
 #define garage 1
 #include <cstdint>
-#include <string.h>
+#include <cstring>
 #include <memory>
 #include <string>
 #include "ev3api.h"

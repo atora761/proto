@@ -3,7 +3,7 @@
 #define SLALOMPATERNB 2
 
 #include <cstdint>
-#include <string.h>
+#include <cstring>
 #include <memory>
 #include <string>
 #include "ev3api.h"
