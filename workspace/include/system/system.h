@@ -6,7 +6,9 @@
 #include <string>
 #include <math.h>
 #include "ev3api.h"
+#include "../FileOp/FileIO.hpp"
 
+//#define EV3
 
 #define SYS_OK 0    //正常終了
 #define SYS_NG -1    //異常終了

@@ -19,6 +19,8 @@
 #include "../../include/SceneInfo/SceneInfo.hpp"
 #include "../../include/Sonic/UltraSonic.h"
 #include "../../include/ColorSpace/ColorSpace.h"
+#include "../../include/FileOp/FileIO.hpp"
+#include <stdio.h>
 
 #if defined(BUILD_MODULE)
 #include "module_cfg.h"
@@ -75,10 +77,13 @@ void main_task(intptr_t unused)
 {
 	CarData&            car_data    = CarData::getInstance();
     SceneControl &scenecontrol = SceneControl::getInstance();
+    FileIO &mlog = FileIO::getInstance();
     int8 retChk = SYS_NG;
     sta_cyc(SONIC_PERIOD);
     sta_cyc(COLOR_PERIOD);
     sta_cyc(CARDATA_PERIOD);
+
+    mlog.log_open();
     while(1){
         car_data.update();
         retChk = scenecontrol.run();
@@ -91,6 +96,8 @@ void main_task(intptr_t unused)
         }
         tslp_tsk(10 * 1000U);
     }
+
+    mlog.log_close();
     
    	stp_cyc(SONIC_PERIOD);
     stp_cyc(COLOR_PERIOD);

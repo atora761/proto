@@ -27,8 +27,6 @@ char FileIO::read(vector<char>& destination,char* file_path){
 	return 0;
 }
 
-
-
 int FileIO::getSize(char* file_path){
 
 	FILE *fp;
@@ -56,4 +54,56 @@ int FileIO::getSize(char* file_path){
 
 	return fsize;
 
+}
+
+int FileIO::log_open(void){
+
+	#ifndef EV3
+	if (( fp_Log = fopen ( "mLog.txt","w" )) == NULL ){
+		printf("file open err\n");
+		return -1;
+	}
+	#else
+	if (( fp_Log = fopen ( "/ev3rt/res/mLog.txt","w" )) == NULL ){
+		printf("file open err\n");
+		return -1;
+	}
+	#endif
+
+}
+
+void FileIO::log_close(void){
+	fclose(fp_Log);
+}
+
+int FileIO::log_set(char* str, int index){
+
+	printf("%s\n",str);
+
+	if ( fwrite( str,index,1,fp_Log ) == 0 ){
+		printf("file write err\n");
+		return -1;
+	}
+
+}
+
+void my_printf(const char* format, ... ) {
+	char buf[256];
+	va_list ap;
+	int index = 0;
+
+	for( index = 0; index < 256; index ++ ) {
+		buf[index] = 0;
+	}
+	va_start(ap, format);
+	vsprintf(buf, format, ap);
+	va_end(ap);
+
+	for( index = 0; buf[index] != 0; index ++ ) {
+		;
+	}
+
+	FileIO &tmp = FileIO::getInstance();
+	tmp.log_set(&buf[0], index);
+	return;
 }

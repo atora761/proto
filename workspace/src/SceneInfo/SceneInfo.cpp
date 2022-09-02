@@ -12,7 +12,7 @@ char SceneInfo::init(){
 	// リサイズ使うとコンパイルできやんねんけど
 	// ここで考えるのをやめた
 	//  実機用（EV3）  /ev3rt/res/timeAttack.csv
-	FileIO file;
+	FileIO &file = FileIO::getInstance();
 	#ifdef EV3
 	printf("EV3 in\n");
 	vector<char> tabuf(file.getSize("/ev3rt/res/timeAttack.csv"));
