@@ -7,9 +7,7 @@
  ** 注記 : sample_c4 (sample_c3にBluetooth通信リモートスタート機能を追加)
  ******************************************************************************
  **/
-#include "ev3api.h"
 #include "app.h"
-#include "etroboc_ext.h"
 #include "./workspace/include/Action/LineTrace.h"
 #include "./workspace/include/Action/Curve.h"
 #include "./workspace/include/Action/Straight.h"
@@ -19,6 +17,7 @@
 #include "../../include/SceneInfo/SceneInfo.hpp"
 #include "../../include/Sonic/UltraSonic.h"
 #include "../../include/ColorSpace/ColorSpace.h"
+#include "ev3api.h"
 
 #if defined(BUILD_MODULE)
 #include "module_cfg.h"
@@ -98,7 +97,6 @@ void main_task(intptr_t unused)
    	stp_cyc(SONIC_PERIOD);
     stp_cyc(COLOR_PERIOD);
     stp_cyc(CARDATA_PERIOD);
-	ETRoboc_notifyCompletedToSimulator();
     ext_tsk();
 }
 
