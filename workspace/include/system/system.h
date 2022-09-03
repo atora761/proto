@@ -23,8 +23,11 @@
 #define RESULT_TRUE 1
 #define RESULT_FALSE 2
 #define CAR_WIDTH (134.22f)
-#define CAR_WHEEL_WIDTH (90.33f)
-
+#ifdef EV3
+	#define CAR_WHEEL_WIDTH (100.0f)
+#else
+	#define CAR_WHEEL_WIDTH (90.33f)
+#endif
 // integer 8bit
 using int8 = int8_t;
 
