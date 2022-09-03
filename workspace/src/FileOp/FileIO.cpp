@@ -70,6 +70,8 @@ int FileIO::log_open(void){
 	}
 	#endif
 
+	return 1;
+
 }
 
 void FileIO::log_close(void){
@@ -85,6 +87,7 @@ int FileIO::log_set(char* str, int index){
 		return -1;
 	}
 
+	return 1;
 }
 
 void my_printf(const char* format, ... ) {
