@@ -64,7 +64,7 @@ int FileIO::log_open(void){
 		return -1;
 	}
 	#else
-	if (( fp_Log = fopen ( "/ev3rt/res/mLog.txt","w" )) == NULL ){
+	if (( fp_Log = fopen ( "/ev3rt/res/mLog.txt","a" )) == NULL ){
 		printf("file open err\n");
 		return -1;
 	}
