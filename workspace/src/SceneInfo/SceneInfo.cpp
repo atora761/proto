@@ -1,5 +1,4 @@
 #include "../../include/SceneInfo/SceneInfo.hpp"
-//#define EV3
 
 char SceneInfo::init(){
 	// timeAttack.csv
