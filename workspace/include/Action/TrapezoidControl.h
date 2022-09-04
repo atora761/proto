@@ -24,20 +24,20 @@ using namespace std;
 
 #ifdef DEBUG_EV3
 //#define RPS				(   2.31f)				/* ���[�^�[�̉�]���x [r/s]	 */
-#define RPS				(   2.75f)
+#define RPS				(   2.75)
 #define WHEEL_WIDTH		(	CAR_WHEEL_WIDTH)				/* �ԗւ̒��a(mm)			 */
 #define V_MAX_WHEEL		(RPS * WHEEL_WIDTH * PI)	
 												/* �ő��]���x				 */
 #endif
 
 #ifdef DEBUG_SPIKE
-#define RPS				(   2.25f)				/* ���[�^�[�̉�]���x [r/s]	 */
-#define WHEEL_WIDTH		(100.0f)				/* �ԗւ̒��a(mm)			 */
+#define RPS				(   2.25)				/* ���[�^�[�̉�]���x [r/s]	 */
+#define WHEEL_WIDTH		(100.0)				/* �ԗւ̒��a(mm)			 */
 #define V_MAX_WHEEL		(RPS * WHEEL_WIDTH * PI)	
 												/* �ő��]���x				 */
 #endif
 
-#define JERK_MAX		( 10000.0f)				/* �ő���x					 */
+#define JERK_MAX		( 15000.0)				/* �ő���x					 */
 #define ACCEL_MAX		( V_MAX_WHEEL)				/* �ő�����x				 */
 #define VELOCITY_MAX	(  100.0f)				/* �ő呬�x					 */
 #define VELOCITY_MIN	(    0.0f)				/* �Œᑬ�x					 */
