@@ -20,12 +20,6 @@ using namespace std;
 #define DEBUG_EV3
 //#define DEBUG_SPIKE
 
-#define JERK_MAX		(  200.0f)				/* �ő���x					 */
-#define ACCEL_MAX		(  700.0f)				/* �ő�����x				 */
-#define VELOCITY_MAX	(  100.0f)				/* �ő呬�x					 */
-#define VELOCITY_MIN	(    0.0f)				/* �Œᑬ�x					 */
-#define EXECTION_COUNT	(   0.01f)				/* �o�ߎ���					 */
-
 #define PI				(3.141592653589793f)	/* �~����					 */
 
 #ifdef DEBUG_EV3
@@ -43,7 +37,11 @@ using namespace std;
 												/* �ő��]���x				 */
 #endif
 
-
+#define JERK_MAX		( 10000.0f)				/* �ő���x					 */
+#define ACCEL_MAX		( V_MAX_WHEEL)				/* �ő�����x				 */
+#define VELOCITY_MAX	(  100.0f)				/* �ő呬�x					 */
+#define VELOCITY_MIN	(    0.0f)				/* �Œᑬ�x					 */
+#define EXECTION_COUNT	(   0.01f)				/* �o�ߎ���					 */
 
 class TrapezoidControl {
 public:

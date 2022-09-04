@@ -59,7 +59,7 @@ int FileIO::getSize(char* file_path){
 int FileIO::log_open(void){
 
 	#ifndef EV3
-	if (( fp_Log = fopen ( "mLog.txt","a" )) == NULL ){
+	if (( fp_Log = fopen ( "mLog.txt","w" )) == NULL ){
 		printf("file open err\n");
 		return -1;
 	}
@@ -79,9 +79,6 @@ void FileIO::log_close(void){
 }
 
 int FileIO::log_set(char* str, int index){
-
-	printf("%s\n",str);
-
 	if ( fwrite( str,index,1,fp_Log ) == 0 ){
 		printf("file write err\n");
 		return -1;

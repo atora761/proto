@@ -118,7 +118,6 @@ int8 CarData::calcOdometry( WheelDist* wheel_dist )
 /* -------------------------------------------------------------------------*/
 COORDINATE CarData::getPos( void )
 {
-	my_printf("x:%f,y:%f\n",position.x,position.y);
 	return position;
 }
 

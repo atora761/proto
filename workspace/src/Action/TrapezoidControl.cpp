@@ -103,7 +103,7 @@ int8_t TrapezoidControl::calc(void)
 	if(start < target){
 		ad.reset(JERK_MAX, ACCEL_MAX, v_target, v_start, v_target, distance * 1.55, 0, 0);
 	}else{
-		ad.reset(JERK_MAX, ACCEL_MAX, v_start, v_start, v_target, distance * 1.7, 0, 0);
+		ad.reset(JERK_MAX, ACCEL_MAX, v_start, v_start, v_target, distance * 1.81, 0, 0);
 	}
 
 	return SYS_OK;
@@ -118,6 +118,6 @@ float TrapezoidControl::conversion() {
 	float ret_conv = 0.0f;						/* 変換後戻り値				 */
 
 	ret_conv = (float)(((double)motor_revision * VELOCITY_MAX) / V_MAX_WHEEL);
-
+	
 	return ret_conv;
 }

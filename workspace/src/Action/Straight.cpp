@@ -69,6 +69,9 @@ int8_t Straight::run(int32_t speed)
 
 		steering.run(motor_power);
 
+		my_printf("%f,%f,%f\n",current_coordinate.x,current_coordinate.y,motor_revision);
+
+
 		return SYS_OK;
 	}
 }
