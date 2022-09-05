@@ -2,7 +2,7 @@
 /// yoshitome
 /// Curve
 
-#include "./Curve.h"
+#include "../../include/Action/Curve.h"
 
 /// コンストラクタ引数なし
 Curve::Curve(){};

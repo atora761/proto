@@ -2,6 +2,8 @@
 
 #define ULTRASONICDECISION
 
+#include "../system/system.h"
+
 #define RANGE_LIMIT 2//使用範囲上限
 
 class UltraSonicDecision : public UseJudgement {

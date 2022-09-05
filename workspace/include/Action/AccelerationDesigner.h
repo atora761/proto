@@ -8,8 +8,7 @@
 #ifndef ACELLDESIGNER_HEADER
 #define ACELLDESIGNER_HEADER
 #include "./AccelerationCurve.h"
-#include <algorithm>
-#include <array>
+#include "../system/system.h"
 
 
 class AccelDesigner {

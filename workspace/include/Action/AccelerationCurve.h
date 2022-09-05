@@ -6,10 +6,9 @@
 #ifndef ACELLCURVE_HEADER
 #define ACELLCURVE_HEADER
 
-#include <cmath>
-#include <complex>
 
-#include <ostream>
+
+#include "../system/system.h"
 
 
 class AccelCurve

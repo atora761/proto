@@ -7,20 +7,17 @@
  ** 注記 : sample_c4 (sample_c3にBluetooth通信リモートスタート機能を追加)
  ******************************************************************************
  **/
+#include "./workspace/include/system/system.h"
 #include "ev3api.h"
 #include "app.h"
 #include "etroboc_ext.h"
-#include "./workspace/include/Action/LineTrace.h"
-#include "./workspace/include/Action/Curve.h"
-#include "./workspace/include/Action/Straight.h"
 #include "./workspace/include/CarData/CarData.h"
 #include "./workspace/include/Scene/SceneControl.h"
-#include "../../include/CarData/CarData.h"
-#include "../../include/SceneInfo/SceneInfo.hpp"
-#include "../../include/Sonic/UltraSonic.h"
-#include "../../include/ColorSpace/ColorSpace.h"
-#include "../../include/FileOp/FileIO.hpp"
-#include <stdio.h>
+#include "./workspace/include/SceneInfo/SceneInfo.hpp"
+#include "./workspace/include/Sonic/UltraSonic.h"
+#include "./workspace/include/ColorSpace/ColorSpace.h"
+#include "./workspace/include/FileOp/FileIO.hpp"
+
 
 #if defined(BUILD_MODULE)
 #include "module_cfg.h"

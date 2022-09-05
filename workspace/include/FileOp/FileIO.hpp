@@ -5,11 +5,7 @@
 
 #pragma once
 
-#include <vector>
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdarg.h>
-//#include "../system/system.h"
+#include "../system/system.h"
 
 using namespace std;
 

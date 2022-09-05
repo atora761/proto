@@ -2,13 +2,7 @@
 /* -------------------------------------------------------------------------- */
 /* includeファイル                                                            */
 /* -------------------------------------------------------------------------- */
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <cstdint>
-#include <string.h>
-#include <memory>
-#include "ev3api.h"
+
 #include "../../include/ColorSpace/ColorSensor.h"
 #include "../../include/system/system.h"
 ColorSensor::ColorSensor(){}

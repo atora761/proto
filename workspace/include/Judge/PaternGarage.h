@@ -1,5 +1,6 @@
 #pragma once
-#include "../../include/Judge/UseJudgement.h"
+#include "UseJudgement.h"
+#include "../system/system.h"
 enum GarageColor
 {
   YELLOWTHRESHOL,
@@ -8,12 +9,6 @@ enum GarageColor
   BLUETHRESHOLD ,
 };
 
-#include <cstdint>
-#include <string.h>
-#include <memory>
-#include <string>
-#include "ev3api.h"
-#include "system.h"
 class PaternGarage : public UseJudgement {
 
 private:

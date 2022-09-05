@@ -1,4 +1,5 @@
 #include "../../include/Action/Straight.h"
+#include "../../include/FileOp/FileIO.hpp"
 
 /// コンストラクタ引数なし
 Straight::Straight()

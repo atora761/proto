@@ -2,6 +2,8 @@
 
 #define COORDINATEDECISION
 
+#include "../system/system.h"
+
 #define USAGE_LIMIT 2//判定実行上限
 #define RANGE_LIMIT 2//使用範囲上限
 

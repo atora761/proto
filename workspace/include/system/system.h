@@ -1,13 +1,22 @@
 #pragma once
 
-//#include <cstdint>
+#include <cstdint>
+#include <algorithm>
+#include <array>
 #include <string.h>
 #include <memory>
 #include <string>
 #include <math.h>
-#include "ev3api.h"
-#include "../FileOp/FileIO.hpp"
+#include <cmath>
+#include <complex>
+#include <ostream>
+#include <cstdio>
+#include <fstream>
+#include <stdlib.h>
+#include <stdarg.h>
+#include <vector>
 
+#include "ev3api.h"
 //#define EV3
 
 #define SYS_OK 0    //正常終了

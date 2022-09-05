@@ -2,8 +2,6 @@
 #include"../system/system.h"
 #include"../Steering/Steering.h"
 
-#include <math.h>
-#include <cmath>
 
 #define PI (3.141592653589793f)
 #define DIST (((PI) * CAR_WHEEL_WIDTH) / 360.0f)

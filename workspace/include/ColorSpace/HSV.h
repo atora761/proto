@@ -2,6 +2,8 @@
 #ifndef _HSV_H_
 #define _HSV_H_
 
+#include "../system/system.h"
+
 class HSV
 {
 public:

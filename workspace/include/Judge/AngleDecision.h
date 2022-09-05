@@ -2,7 +2,7 @@
 
 #define RANGE_LIMIT 2 //使用範囲上限
 
-
+#include "../system/system.h"
 
 class AngleDecision : public UseJudgement {
 

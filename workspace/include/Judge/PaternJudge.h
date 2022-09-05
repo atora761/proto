@@ -1,17 +1,11 @@
 #pragma once
 #define slalom 0
 #define garage 1
-#include <cstdint>
-#include <string.h>
-#include <memory>
-#include <string>
-#include "ev3api.h"
-#include "system.h"
+#include "../system/system.h"
 #include "../../include/Judge/UseJudgement.h"
 #include "../../include/Judge/PaternGarage.h"
 #include "../../include/Judge/PaternSlalom.h"
-#include <vector>
-#include <stdlib.h>
+
 using namespace std;
 //判定のクラス名追加が必要
 class PaternJudge
