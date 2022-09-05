@@ -17,7 +17,7 @@
 #include <vector>
 
 #include "ev3api.h"
-//#define EV3
+
 
 #define SYS_OK 0    //正常終了
 #define SYS_NG -1    //異常終了
@@ -32,7 +32,8 @@
 #define RESULT_TRUE 1
 #define RESULT_FALSE 2
 #define CAR_WIDTH (134.22f)
-#ifdef EV3
+
+#if defined(EV3) || defined(SPIKE)
 	#define CAR_WHEEL_WIDTH (100.0f)
 #else
 	#define CAR_WHEEL_WIDTH (90.33f)
@@ -68,6 +69,7 @@ using intptr = intptr_t;
 using uintptr = uintptr_t;
 
 /* 列挙型の定義 */
+#if defined(SPIKE)
 enum SensorPort
 {
   SENSOR_TOUCH = EV3_PORT_1, //タッチセンサー
@@ -75,6 +77,15 @@ enum SensorPort
   SENSOR_SONAR = EV3_PORT_3, //超音波センサー
   SENSOR_GYRO  = EV3_PORT_4,  //ジャイロセンサー
 };
+#else
+enum SensorPort
+{
+  SENSOR_TOUCH , //タッチセンサー
+  SENSOR_COLOR , //カラーセンサー
+  SENSOR_SONAR , //超音波センサー
+  SENSOR_GYRO  ,  //ジャイロセンサー
+};
+#endif
 
 
 
