@@ -70,11 +70,12 @@ using uintptr = uintptr_t;
 /* 列挙型の定義 */
 enum SensorPort
 {
-  SENSOR_TOUCH, //タッチセンサー
-  SENSOR_COLOR, //カラーセンサー
-  SENSOR_SONAR, //超音波センサー
-  SENSOR_GYRO,  //ジャイロセンサー
+  SENSOR_TOUCH = EV3_PORT_1, //タッチセンサー
+  SENSOR_COLOR = EV3_PORT_2, //カラーセンサー
+  SENSOR_SONAR = EV3_PORT_3, //超音波センサー
+  SENSOR_GYRO  = EV3_PORT_4,  //ジャイロセンサー
 };
+
 
 
 /* 構造体定義 */

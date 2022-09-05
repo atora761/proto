@@ -10,7 +10,7 @@
 #include "./workspace/include/system/system.h"
 #include "ev3api.h"
 #include "app.h"
-#include "etroboc_ext.h"
+//#include "etroboc_ext.h"
 #include "./workspace/include/CarData/CarData.h"
 #include "./workspace/include/Scene/SceneControl.h"
 #include "./workspace/include/SceneInfo/SceneInfo.hpp"
@@ -99,7 +99,7 @@ void main_task(intptr_t unused)
    	stp_cyc(SONIC_PERIOD);
     stp_cyc(COLOR_PERIOD);
     stp_cyc(CARDATA_PERIOD);
-	ETRoboc_notifyCompletedToSimulator();
+	//ETRoboc_notifyCompletedToSimulator();
     ext_tsk();
 }
 

@@ -94,253 +94,330 @@ char SceneInfo::decode(vector<char>& fileData,vector<SceneData>& sceneData){
 	int cnt=0;
 	char* data_ptr = NULL;
 	char *save_ptr1 ;
+	char *start;
 	SceneData tmpData;
 	printf("strtok\n");
+	for(int i=0;i<fileData.size();i++){
+		printf("%c",fileData[i]);
+	}
+	printf("\n");
 	data_ptr = strtok_r(fileData.data(),",",&save_ptr1);
+	start = data_ptr;
 	do{
-		printf("loop_stt\n");
+		printf("loop_stt cnt=%d\n",cnt++);
+		printf("data=%p,save=%p\n",data_ptr,save_ptr1);
 		// シーン番号
 		tmpData.num=atoi(data_ptr);
 		/// 動作構造体代入-----------------------------------------------------
 		// 使用動作
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.moveData.motion=atoi(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		// ライン位置
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.moveData.edge=atoi(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		
 		// PIDゲイン
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.moveData.gain.p=atof(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.moveData.gain.i=atof(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.moveData.gain.d=atof(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
+
 
 		// 閾値
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.moveData.target_val=atof(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 
 		// 目標速度
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.moveData.speed=atoi(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 
 		// カーブ半径
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.moveData.radius=atof(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 
 		// 目標座標
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.moveData.coordinate.x=atof(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.moveData.coordinate.y=atof(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 
 		// 旋回方向
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.moveData.direction=atoi(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 
 		// アーム位置
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.moveData.arm_angle=atoi(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 
 		// アーム速度
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.moveData.arm_pwm=atoi(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		/// ------------------------------------------------------------------
 
 		/// 判定構造体代入-----------------------------------------------------
 		// 使用判定1
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.decision[0]=atoi(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 
 		// 使用判定2
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.decision[1]=atoi(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 
 		// 座標範囲
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.coordinate_range[0]=atoi(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.coordinate_range[1]=atoi(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 
 		// 目標座標
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.coordinate.x=atoi(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.coordinate.y=atoi(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 
 		// 距離範囲
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.distance_range=atoi(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 
 		// 目標距離
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.distance=atoi(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 
 		// 目標色
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.color=atoi(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 
 		// RGB範囲
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.rgb_range[0]=atoi(data_ptr);//R
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.rgb_range[1]=atoi(data_ptr);//G
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.rgb_range[2]=atoi(data_ptr);//B
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 
 		// 目標RGB
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.rgb.r=atoi(data_ptr);//R
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.rgb.g=atoi(data_ptr);//G
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.rgb.b=atoi(data_ptr);//B
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		// HSV範囲
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.hsv_range[0]=atoi(data_ptr);//H
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.hsv_range[1]=atoi(data_ptr);//S
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.hsv_range[2]=atoi(data_ptr);//V
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 
 		// 目標HSV
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.hsv.h=atoi(data_ptr);//H
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.hsv.s=atoi(data_ptr);//S
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.hsv.v=atoi(data_ptr);//V
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 
 		// 角度範囲
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.angle_range=atoi(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 
 		// 角度
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.angle=atof(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 
 		// 論理演算方法
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.decisionData.logic=atoi(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		/// ------------------------------------------------------------------
 
 		/// 判定構造体代入-----------------------------------------------------
 		// 使用補正
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.correction[0]=atoi(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.correction[1]=atoi(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.correction[2]=atoi(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 
 		// 補正座標
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.coordinate.x=atof(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.coordinate.y=atof(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 
 		// 補正角度
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.angle=atof(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 
 		/// 補正用判定
 		// 使用判定1
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.decision[0]=atoi(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 
 		// 使用判定2
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.decision[1]=atoi(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 
 		// 座標範囲
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.coordinate_range[0]=atoi(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.coordinate_range[1]=atoi(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 
 		// 目標座標
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.coordinate.x=atoi(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.coordinate.y=atoi(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 
 		// 距離範囲
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.distance_range=atoi(data_ptr);
-
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		// 目標距離
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.distance=atoi(data_ptr);
-
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		// 目標色
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.color=atoi(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 
 		// RGB範囲
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.rgb_range[0]=atoi(data_ptr);//R
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.rgb_range[1]=atoi(data_ptr);//G
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.rgb_range[2]=atoi(data_ptr);//B
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 
 		// 目標RGB
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.rgb.r=atoi(data_ptr);//R
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.rgb.g=atoi(data_ptr);//G
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.rgb.b=atoi(data_ptr);//B
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		// HSV範囲
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.hsv_range[0]=atoi(data_ptr);//H
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.hsv_range[1]=atoi(data_ptr);//S
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.hsv_range[2]=atoi(data_ptr);//V
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 
 		// 目標HSV
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.hsv.h=atoi(data_ptr);//H
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.hsv.s=atoi(data_ptr);//S
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.hsv.v=atoi(data_ptr);//V
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 
 		// 角度範囲
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.angle_range=atoi(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 
 		// 角度範囲
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.angle=atof(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		// 論理演算方法
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.correctionData.decisionData.logic=atoi(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		// スラロームパターンフラグ
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.paterndecisiondata.slalom_decision=atoi(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		// ガレージパターンフラグ
 		data_ptr = strtok_r(NULL,",",&save_ptr1);
 		tmpData.paterndecisiondata.garage_decision=atoi(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		// ガレージ格納ポイント
 		data_ptr = strtok_r(NULL,"\n",&save_ptr1);
 		tmpData.paterndecisiondata.garage_point=atoi(data_ptr);
+		printf("try,data=%p,save=%p\n",data_ptr,save_ptr1);
 		/// ------------------------------------------------------------------
 		sceneData.push_back(tmpData);
 		try
 		{
 			data_ptr = strtok_r(NULL,",",&save_ptr1);
-			printf("try\n");
+			printf("try,data=%c,save=%p\n",data_ptr+1,save_ptr1);
 		}catch(...){
 			printf("catch\n");
 			break;
 		}
-	}while(data_ptr!=NULL);
+	}while(fileData.size() > (int)(data_ptr - start));
+	
+	printf("loop end\n");
 
-	free(data_ptr);
-	free(save_ptr1);
+
 	return 0;
 }
 
